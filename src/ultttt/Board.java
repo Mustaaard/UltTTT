@@ -83,9 +83,9 @@ public class Board {
                 {   
                     colorMatch = board[row][col].getColor();
                     numConsecutive++;
-                    if(numConsecutive == 4) {
+                    if(numConsecutive == 3) {
                         int sum = 0;
-                        for(int i = 0;i < 4;i++) {
+                        for(int i = 0;i < 3;i++) {
                             board[row][col-i].setColor(Color.GREEN);
                             sum += board[row][col-i].getValue();
                         }
@@ -122,9 +122,9 @@ public class Board {
                 {   
                     colorMatch = board[row][col].getColor();
                     numConsecutive++;
-                    if(numConsecutive == 4) {
+                    if(numConsecutive == 3) {
                         int sum = 0;
-                        for(int i = 0;i < 4;i++) {
+                        for(int i = 0;i < 3;i++) {
                             board[row-i][col].setColor(Color.GREEN);
                             sum += board[row-i][col].getValue();
                         }
@@ -161,9 +161,9 @@ public class Board {
                 {   
                     colorMatch = board[col][currentRow].getColor();
                     numConsecutive++;
-                    if(numConsecutive == 4) {
+                    if(numConsecutive == 3) {
                         int sum = 0;
-                        for(int i = 0;i<4;i++) {
+                        for(int i = 0;i<3;i++) {
                             board[col-i][currentRow+i].setColor(Color.GREEN);
                             sum += board[col-i][currentRow+i].getValue();
                         }
@@ -192,8 +192,8 @@ public class Board {
                 {   
                     colorMatch = board[currentCol][row].getColor();
                     numConsecutive++;
-                    if(numConsecutive == 4) {
-                        for(int i = 0;i<4;i++) {
+                    if(numConsecutive == 3) {
+                        for(int i = 0;i<3;i++) {
                             board[currentCol-i][row+i].setColor(Color.GREEN);
                         }
                         return 1;
@@ -221,9 +221,9 @@ public class Board {
                 {   
                     colorMatch = board[currentCol][row].getColor();
                     numConsecutive++;
-                    if(numConsecutive == 4) {
+                    if(numConsecutive == 3) {
                         int sum = 0;
-                        for(int i = 0;i<4;i++) {
+                        for(int i = 0;i<3;i++) {
                             board[currentCol+i][row+i].setColor(Color.GREEN);
                             sum += board[currentCol+i][row+i].getValue();
                         }
@@ -254,9 +254,9 @@ public class Board {
                 {   
                     colorMatch = board[col][currentRow].getColor();
                     numConsecutive++;
-                    if(numConsecutive == 4) {
+                    if(numConsecutive == 3) {
                         int sum = 0;
-                        for(int i = 0;i<4;i++) {
+                        for(int i = 0;i<3;i++) {
                             board[col+i][currentRow+i].setColor(Color.GREEN);
                             sum += board[col+i][currentRow+i].getValue();
                         }
