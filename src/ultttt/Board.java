@@ -37,14 +37,12 @@ public class Board {
             
             if(board[y][x] == null) {
                 board[y][x] = new Piece(Player.getCurrentPlayer().getColor());
-                if(checkWin() != 0) {
+                if(checkWin()) {
                     won = true;
                     if(Player.getCurrentPlayer().getColor() == Color.RED) {
-                        Player.getCurrentPlayer().addToScore(checkWin());
                         winner = "Red";
                     }
                     else {
-                        Player.getCurrentPlayer().addToScore(checkWin());
                         winner = "Yellow";
                     }
                 }
@@ -54,18 +52,18 @@ public class Board {
         }
     }
     
-    public static int checkWin() {
+    public static boolean checkWin() {
         
-        if(HorizontalCheckWin() != 0)
-            return HorizontalCheckWin();
-        if(VerticalCheckWin() != 0)
-            return VerticalCheckWin();
-        if(DiagonalCheckWin() != 0)
-            return DiagonalCheckWin();
-        return 0;
+        if(HorizontalCheckWin())
+            return true;
+        if(VerticalCheckWin())
+            return true;
+        if(DiagonalCheckWin())
+            return true;
+        return false;
     }
     
-    public static int HorizontalCheckWin() {
+    public static boolean HorizontalCheckWin() {
         int numConsecutive = 0;
         Color colorMatch = null;
 
@@ -84,12 +82,10 @@ public class Board {
                     colorMatch = board[row][col].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
-                        int sum = 0;
                         for(int i = 0;i < 3;i++) {
                             board[row][col-i].setColor(Color.GREEN);
-                            sum += board[row][col-i].getValue();
                         }
-                        return sum;
+                        return true;
                     }
                 }
                 else if (board[row][col].getColor() != colorMatch)    //different color as previous
@@ -101,10 +97,10 @@ public class Board {
             colorMatch = null;           //move to the next row.
             numConsecutive = 0; 
         } 
-        return 0;
+        return false;
     }
     
-    public static int VerticalCheckWin() {
+    public static boolean VerticalCheckWin() {
         int numConsecutive = 0;
         Color colorMatch = null;
 
@@ -123,12 +119,10 @@ public class Board {
                     colorMatch = board[row][col].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
-                        int sum = 0;
                         for(int i = 0;i < 3;i++) {
                             board[row-i][col].setColor(Color.GREEN);
-                            sum += board[row-i][col].getValue();
                         }
-                        return sum;
+                        return true;
                     }
                 }
                 else if (board[row][col].getColor() != colorMatch)    //different color as previous
@@ -140,10 +134,10 @@ public class Board {
             colorMatch = null;           //move to the next row.
             numConsecutive = 0; 
         } 
-        return 0;
+        return false;
     }
     
-    public static int DiagonalCheckWin() {
+    public static boolean DiagonalCheckWin() {
         int numConsecutive = 0;
         Color colorMatch = null;
 
@@ -162,12 +156,10 @@ public class Board {
                     colorMatch = board[col][currentRow].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
-                        int sum = 0;
                         for(int i = 0;i<3;i++) {
                             board[col-i][currentRow+i].setColor(Color.GREEN);
-                            sum += board[col-i][currentRow+i].getValue();
                         }
-                        return sum;
+                        return true;
                     }
                 }
                 else if (board[col][currentRow].getColor() != colorMatch)    //different color as previous
@@ -196,7 +188,7 @@ public class Board {
                         for(int i = 0;i<3;i++) {
                             board[currentCol-i][row+i].setColor(Color.GREEN);
                         }
-                        return 1;
+                        return true;
                     }
                 }
                 else if (board[currentCol][row].getColor() != colorMatch)    //different color as previous
@@ -222,12 +214,10 @@ public class Board {
                     colorMatch = board[currentCol][row].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
-                        int sum = 0;
                         for(int i = 0;i<3;i++) {
                             board[currentCol+i][row+i].setColor(Color.GREEN);
-                            sum += board[currentCol+i][row+i].getValue();
                         }
-                        return sum;
+                        return true;
                     }
                 }
                 else if (board[currentCol][row].getColor() != colorMatch)    //different color as previous
@@ -255,12 +245,10 @@ public class Board {
                     colorMatch = board[col][currentRow].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
-                        int sum = 0;
                         for(int i = 0;i<3;i++) {
                             board[col+i][currentRow+i].setColor(Color.GREEN);
-                            sum += board[col+i][currentRow+i].getValue();
                         }
-                        return sum;
+                        return true;
                     }
                 }
                 else if (board[col][currentRow].getColor() != colorMatch)    //different color as previous
@@ -274,7 +262,7 @@ public class Board {
             numConsecutive = 0;
         }
         
-        return 0;
+        return false;
     }
     
     public static void Draw(Graphics2D g) {
