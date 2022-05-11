@@ -18,7 +18,7 @@ public class Player {
     public static void Reset() {
         if(firstTime) {
             players[0] = new Player(Color.red);
-            players[1] = new Player(Color.yellow);
+            players[1] = new Player(Color.blue);
             firstTime = false;
         }
         currentPlayer = players[0];
