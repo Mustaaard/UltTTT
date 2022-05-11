@@ -43,7 +43,7 @@ public class Board {
                         winner = "Red";
                     }
                     else {
-                        winner = "Yellow";
+                        winner = "Blue";
                     }
                 }
                     
@@ -291,7 +291,7 @@ public class Board {
             for (int zcol=0;zcol<NUM_COLUMNS;zcol++)        
             {
                 if (board[zrow][zcol] != null)
-                    board[zrow][zcol].draw(g, zrow, zcol,xdelta, ydelta,"X");
+                    board[zrow][zcol].draw(g, zrow, zcol,xdelta, ydelta);
             }
         }
 

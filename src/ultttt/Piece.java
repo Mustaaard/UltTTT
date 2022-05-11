@@ -20,10 +20,15 @@ public class Piece {
         color = _color;
     }
 
-    public void draw(Graphics2D g,int row,int column,int xdelta,int ydelta,String XorO) {
+    public void draw(Graphics2D g,int row,int column,int xdelta,int ydelta) {
+        String hahayoudontknowwhatthisvariabledoes = "";
+        if(color == Color.red)
+            hahayoudontknowwhatthisvariabledoes = "X";
+        else
+            hahayoudontknowwhatthisvariabledoes = "O";
         g.setFont (new Font ("Arial",Font.PLAIN, 92));
         g.setColor(color);
-        g.drawString(XorO,Window.getX(column*xdelta), Window.getY((row+1)*ydelta));
+        g.drawString(hahayoudontknowwhatthisvariabledoes,Window.getX(column*xdelta), Window.getY((row+1)*ydelta));
         g.setColor(Color.black);
     }
     
