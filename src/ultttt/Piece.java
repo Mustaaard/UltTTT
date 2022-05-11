@@ -26,7 +26,7 @@ public class Piece {
         
         g.setFont (new Font ("Arial",Font.PLAIN, 92));
         g.setColor(color);
-        g.drawString(hahayoudontknowwhatthisvariabledoes,Window.getX(column*xdelta), Window.getY((row)*ydelta));
+        g.drawString(hahayoudontknowwhatthisvariabledoes,Window.getX(column*xdelta), Window.getY((row+1)*ydelta));
         g.setColor(Color.black);
     }
     

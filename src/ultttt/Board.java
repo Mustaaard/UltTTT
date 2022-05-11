@@ -23,7 +23,7 @@ public class Board {
         
         x -= Window.getX(0);
         y -= Window.getY(0);
-        int ydelta = Window.getHeight2()/9;
+        int ydelta = Window.getHeight2()/8;
         int xdelta = Window.getWidth2()/NUM_COLUMNS;
         
         if(x > 0 && x < Window.getWidth2() && y > 0 && y < Window.getHeight2()){
