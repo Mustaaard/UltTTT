@@ -5,8 +5,8 @@ package ultttt;
 import java.awt.*;
 
 public class Board {
-    private final static int NUM_ROWS = 8;
-    private final static int NUM_COLUMNS = 8;      
+    private final static int NUM_ROWS = 9;
+    private final static int NUM_COLUMNS = 9;      
     private static Piece board[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
     public static boolean won = false;
     private static String winner = "";
@@ -30,15 +30,13 @@ public class Board {
             x = x/xdelta;
             y = y/ydelta;
             //System.out.println(x + " " + y);
-            int Bottomest = 7;
+            
             
             //"falling" piece code
-            while(Bottomest != 0 && board[Bottomest][x] != null) {
-                Bottomest--;
-            }
+            
             
             if(board[y][x] == null) {
-                board[Bottomest][x] = new Piece(Player.getCurrentPlayer().getColor());
+                board[y][x] = new Piece(Player.getCurrentPlayer().getColor());
                 if(checkWin() != 0) {
                     won = true;
                     if(Player.getCurrentPlayer().getColor() == Color.RED) {
@@ -53,13 +51,7 @@ public class Board {
                     
                 Player.switchCurrentPlayer();
             }
-            else
-                RemovePiece(x,y);
         }
-    }
-    
-    public static void RemovePiece(int x,int y) {
-        
     }
     
     public static int checkWin() {
