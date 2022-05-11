@@ -7,9 +7,11 @@ import java.awt.*;
 
 public class Piece {
     private Color color;
-    Piece(Color _color)
+    private String hahayoudontknowwhatthisvariabledoes;
+    Piece(Color _color,String _letter)
     {
         color = _color;
+        hahayoudontknowwhatthisvariabledoes = _letter;
     }
     public Color getColor()
     {
@@ -21,11 +23,7 @@ public class Piece {
     }
 
     public void draw(Graphics2D g,int row,int column,int xdelta,int ydelta) {
-        String hahayoudontknowwhatthisvariabledoes = "";
-        if(color == Color.red)
-            hahayoudontknowwhatthisvariabledoes = "X";
-        else
-            hahayoudontknowwhatthisvariabledoes = "O";
+        
         g.setFont (new Font ("Arial",Font.PLAIN, 92));
         g.setColor(color);
         g.drawString(hahayoudontknowwhatthisvariabledoes,Window.getX(column*xdelta), Window.getY((row+1)*ydelta));

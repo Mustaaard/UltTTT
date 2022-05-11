@@ -36,7 +36,7 @@ public class Board {
             
             
             if(board[y][x] == null) {
-                board[y][x] = new Piece(Player.getCurrentPlayer().getColor());
+                board[y][x] = new Piece(Player.getCurrentPlayer().getColor(),Player.getCurrentPlayer().getLetter());
                 if(checkWin()) {
                     won = true;
                     if(Player.getCurrentPlayer().getColor() == Color.RED) {

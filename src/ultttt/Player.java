@@ -13,12 +13,13 @@ public class Player {
     private int score = 0;
     private Color color = null;
     private static boolean firstTime = true;
+    private String Letter;
     
             
     public static void Reset() {
         if(firstTime) {
-            players[0] = new Player(Color.red);
-            players[1] = new Player(Color.blue);
+            players[0] = new Player(Color.red,"X");
+            players[1] = new Player(Color.blue,"O");
             firstTime = false;
         }
         currentPlayer = players[0];
@@ -37,12 +38,17 @@ public class Player {
         }
     }
     
-    Player(Color _color) {
+    Player(Color _color,String _letter) {
         color = _color;
+        Letter = _letter;
     }
     
     public Color getColor() {
         return(color);
+    }
+    
+    public String getLetter() {
+        return(Letter);
     }
     
     public int getScore() {
