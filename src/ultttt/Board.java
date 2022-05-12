@@ -3,6 +3,7 @@
 
 package ultttt;
 import java.awt.*;
+import static ultttt.Player.players;
 
 public class Board {
     private final static int NUM_ROWS = 9;
@@ -305,11 +306,18 @@ public class Board {
             }
         }
 
+        if (players[0]==Player.getCurrentPlayer())
+        {
         g.setColor(Color.red);
         g.setFont (new Font ("Arial",Font.PLAIN, 25));
-        g.drawString(""+Player.players[0].getScore(),Window.getWidth2(),60);
-        g.setColor(Color.yellow);
-        g.drawString(""+Player.players[1].getScore(),Window.getX(0),60);
+        g.drawString("X's Turn",Window.getWidth2()-60,60);
+        }
+        else if (players[1]==Player.getCurrentPlayer())
+        {
+        g.setColor(Color.blue);
+        g.setFont (new Font ("Arial",Font.PLAIN, 25));
+        g.drawString("O's Turn",Window.getX(0),60);
+        }
         
         if(won) {
             g.setColor(Color.black);
