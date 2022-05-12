@@ -24,9 +24,9 @@ public class Piece {
 
     public void draw(Graphics2D g,int row,int column,int xdelta,int ydelta) {
         
-        g.setFont (new Font ("Arial",Font.PLAIN, 92));
+        g.setFont (new Font ("Arial",Font.PLAIN, 80));
         g.setColor(color);
-        g.drawString(hahayoudontknowwhatthisvariabledoes,Window.getX(column*xdelta), Window.getY((row+1)*ydelta));
+        g.drawString(hahayoudontknowwhatthisvariabledoes,Window.getX(column*xdelta)+5, Window.getY((row+1)*ydelta));
         g.setColor(Color.black);
     }
     

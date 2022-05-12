@@ -13,12 +13,20 @@ public class Board {
     private static int ydelta = Window.getHeight2()/NUM_ROWS;
     private static int xdelta = Window.getWidth2()/NUM_COLUMNS;
     
+    public static int MouseXPos;
+    public static int MouseYPos;
+    
     public static void Reset() {
 //clear the board.
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
             for (int zcol=0;zcol<NUM_COLUMNS;zcol++)
                 board[zrow][zcol] = null;
         won = false;
+    }
+    
+    public static void setMousePos(int x, int y) {
+        MouseXPos = x;
+        MouseYPos = y;
     }
     
     public static void AddPiece(int x, int y) {

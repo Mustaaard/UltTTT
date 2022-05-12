@@ -39,17 +39,17 @@ public class UltTTT extends JFrame implements Runnable {
             
 
     addMouseMotionListener(new MouseMotionAdapter() {
-      public void mouseDragged(MouseEvent e) {
-
-        repaint();
-      }
+        public void mouseDragged(MouseEvent e) {
+            
+            repaint();
+        }
     });
 
     addMouseMotionListener(new MouseMotionAdapter() {
-      public void mouseMoved(MouseEvent e) {
-
-        repaint();
-      }
+        public void mouseMoved(MouseEvent e) {
+            Board.setMousePos(e.getX()-Window.getX(0),e.getY()-Window.getY(0));
+            repaint();
+        }
     });
 
         addKeyListener(new KeyAdapter() {
