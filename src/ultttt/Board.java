@@ -276,15 +276,21 @@ public class Board {
     
     public static void Draw(Graphics2D g) {
 //draw grid
-        g.setColor(Color.black);
-        for (int zi = -0;zi<NUM_ROWS;zi++)
+        
+        for (int zi = 0;zi<NUM_ROWS;zi++)
         {
+            g.setColor(Color.black);
+            if(zi%3 == 0)
+                g.setColor(Color.red);
             g.drawLine(Window.getX(0),Window.getY(zi*ydelta),
                     Window.getX(Window.getWidth2()),Window.getY(zi*ydelta));
         }
         
         for (int zi = 1;zi<NUM_COLUMNS;zi++)
         {
+            g.setColor(Color.black);
+            if(zi%3 == 0)
+                g.setColor(Color.red);
             g.drawLine(Window.getX(zi*xdelta),Window.getY(0),
                     Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
         }
