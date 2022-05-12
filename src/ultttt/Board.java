@@ -10,7 +10,9 @@ public class Board {
     private static Piece board[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
     public static boolean won = false;
     private static String winner = "";
-
+    private static int ydelta = Window.getHeight2()/NUM_ROWS;
+    private static int xdelta = Window.getWidth2()/NUM_COLUMNS;
+    
     public static void Reset() {
 //clear the board.
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
@@ -23,8 +25,7 @@ public class Board {
         
         x -= Window.getX(0);
         y -= Window.getY(0);
-        int ydelta = Window.getHeight2()/8;
-        int xdelta = Window.getWidth2()/NUM_COLUMNS;
+        
         
         if(x > 0 && x < Window.getWidth2() && y > 0 && y < Window.getHeight2()){
             x = x/xdelta;
@@ -267,11 +268,6 @@ public class Board {
     
     public static void Draw(Graphics2D g) {
 //draw grid
-
-        int ydelta = Window.getHeight2()/8;
-        int xdelta = Window.getWidth2()/NUM_COLUMNS;
-        
-        
         g.setColor(Color.black);
         for (int zi = -0;zi<NUM_ROWS;zi++)
         {
