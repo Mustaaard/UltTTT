@@ -82,13 +82,16 @@ public class Board {
         {
             for (int col=0;col<NUM_COLUMNS;col++)
             {
-
+                if(col%3 == 0)
+                    numConsecutive = 1;
+                
                 if (board[row][col] == null)      //empty location
                 {        
                     numConsecutive = 0;
                 }
                 else if (board[row][col].getColor() == colorMatch || colorMatch == null)     //same color as previous
                 {   
+                        numConsecutive = 1;
                     colorMatch = board[row][col].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
@@ -106,7 +109,7 @@ public class Board {
             }            
             colorMatch = null;           //move to the next row.
             numConsecutive = 0; 
-        } 
+        }
         return false;
     }
     
@@ -115,22 +118,25 @@ public class Board {
         Color colorMatch = null;
 
         //Check for vertical win.        
-        for (int col=0;col<NUM_COLUMNS;col++)
+        for (int col=0;col<NUM_ROWS;col++)
         {
-            for (int row=0;row<NUM_ROWS;row++)
+            for (int row=0;row<NUM_COLUMNS;row++)
             {
-
+                if(row%3 == 0)
+                    numConsecutive = 1;
+                
                 if (board[row][col] == null)      //empty location
                 {        
                     numConsecutive = 0;
                 }
                 else if (board[row][col].getColor() == colorMatch || colorMatch == null)     //same color as previous
                 {   
+                        numConsecutive = 1;
                     colorMatch = board[row][col].getColor();
                     numConsecutive++;
                     if(numConsecutive == 3) {
                         for(int i = 0;i < 3;i++) {
-                            board[row-i][col].setColor(Color.GREEN);
+                            board[row][col-i].setColor(Color.GREEN);
                         }
                         return true;
                     }
@@ -143,7 +149,7 @@ public class Board {
             }            
             colorMatch = null;           //move to the next row.
             numConsecutive = 0; 
-        } 
+        }
         return false;
     }
     
