@@ -277,6 +277,10 @@ public class Board {
     
     public static void Draw(Graphics2D g) {
 //draw grid
+        if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
+            HighLight.getSection(MouseXPos,MouseYPos);
+            HighLight.draw(g);
+        }
         
         for (int zi = 0;zi<NUM_ROWS;zi++)
         {
