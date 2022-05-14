@@ -64,10 +64,10 @@ public class Board {
     
     public static boolean checkWin() {
         
-        if(HorizontalCheckWin())
+        /*if(HorizontalCheckWin())
             return true;
         if(VerticalCheckWin())
-            return true;
+            return true;*/
         if(DiagonalCheckWin())
             return true;
         return false;
@@ -156,30 +156,32 @@ public class Board {
         Color colorMatch = null;
 
         //Check for diagonal win.        
-        for (int row=3;row<NUM_ROWS;row++)
+        for (int row=2;row<NUM_ROWS;row++)
         {
             int currentRow = row;
             for (int col=0;col<row+1;col++)
             {
-                if (board[col][currentRow] == null)      //empty location
-                {        
-                    numConsecutive = 0;
-                }
-                else if (board[col][currentRow].getColor() == colorMatch || colorMatch == null)     //same color as previous
-                {   
-                    colorMatch = board[col][currentRow].getColor();
-                    numConsecutive++;
-                    if(numConsecutive == 3) {
-                        for(int i = 0;i<3;i++) {
-                            board[col-i][currentRow+i].setColor(Color.GREEN);
-                        }
-                        return true;
+                if((row+1)%3 == 0) {
+                    if (board[col][currentRow] == null)      //empty location
+                    {        
+                        numConsecutive = 0;
                     }
-                }
-                else if (board[col][currentRow].getColor() != colorMatch)    //different color as previous
-                {                                   
-                    colorMatch = board[col][currentRow].getColor();
-                    numConsecutive = 1;
+                    else if (board[col][currentRow].getColor() == colorMatch || colorMatch == null)     //same color as previous
+                    {   
+                        colorMatch = board[col][currentRow].getColor();
+                        numConsecutive++;
+                        if(numConsecutive == 3) {
+                            for(int i = 0;i<3;i++) {
+                                board[col-i][currentRow+i].setColor(Color.GREEN);
+                            }
+                            return true;
+                        }
+                    }
+                    else if (board[col][currentRow].getColor() != colorMatch)    //different color as previous
+                    {                                   
+                        colorMatch = board[col][currentRow].getColor();
+                        numConsecutive = 1;
+                    }
                 }
                 currentRow--;
             }            
@@ -187,28 +189,32 @@ public class Board {
             numConsecutive = 0;
         }
         
-        for(int col=0;col < NUM_COLUMNS-3;col++) {
+        for(int col=0;col < NUM_COLUMNS-2;col++) {
             int currentCol = col;
-            for(int row=NUM_ROWS-1;row > col-1;row--) {
-                if (board[currentCol][row] == null)      //empty location
-                {        
-                    numConsecutive = 0;
-                }
-                else if (board[currentCol][row].getColor() == colorMatch || colorMatch == null)     //same color as previous
-                {   
-                    colorMatch = board[currentCol][row].getColor();
-                    numConsecutive++;
-                    if(numConsecutive == 3) {
-                        for(int i = 0;i<3;i++) {
-                            board[currentCol-i][row+i].setColor(Color.GREEN);
-                        }
-                        return true;
+            for(int row=NUM_ROWS-1;row > col-1;row--)
+            {
+                
+                if(col%3 == 0 || col == 0) {
+                    if (board[currentCol][row] == null)      //empty location
+                    {        
+                        numConsecutive = 0;
                     }
-                }
-                else if (board[currentCol][row].getColor() != colorMatch)    //different color as previous
-                {                                   
-                    colorMatch = board[currentCol][row].getColor();
-                    numConsecutive = 1;
+                    else if (board[currentCol][row].getColor() == colorMatch || colorMatch == null)     //same color as previous
+                    {   
+                        colorMatch = board[currentCol][row].getColor();
+                        numConsecutive++;
+                        if(numConsecutive == 3) {
+                            for(int i = 0;i<3;i++) {
+                                board[currentCol-i][row+i].setColor(Color.GREEN);
+                            }
+                            return true;
+                        }
+                    }
+                    else if (board[currentCol][row].getColor() != colorMatch)    //different color as previous
+                    {                                   
+                        colorMatch = board[currentCol][row].getColor();
+                        numConsecutive = 1;
+                    }
                 }
                 currentCol++;
             }
@@ -216,28 +222,32 @@ public class Board {
             numConsecutive = 0;
         }
         
-        for(int col = NUM_COLUMNS-1;col > 2;col--) {
+        for(int col = NUM_COLUMNS-1;col > 1;col--) {
             int currentCol = col;
-            for(int row = NUM_ROWS-1;row > NUM_ROWS-2-col;row--) {
-                if (board[currentCol][row] == null)      //empty location
-                {        
-                    numConsecutive = 0;
-                }
-                else if (board[currentCol][row].getColor() == colorMatch || colorMatch == null)     //same color as previous
-                {   
-                    colorMatch = board[currentCol][row].getColor();
-                    numConsecutive++;
-                    if(numConsecutive == 3) {
-                        for(int i = 0;i<3;i++) {
-                            board[currentCol+i][row+i].setColor(Color.GREEN);
-                        }
-                        return true;
+            for(int row = NUM_ROWS-1;row > NUM_ROWS-2-col;row--)
+            {
+                
+                if((col+1)%3 == 0) {
+                    if (board[currentCol][row] == null)      //empty location
+                    {        
+                        numConsecutive = 0;
                     }
-                }
-                else if (board[currentCol][row].getColor() != colorMatch)    //different color as previous
-                {                                   
-                    colorMatch = board[currentCol][row].getColor();
-                    numConsecutive = 1;
+                    else if (board[currentCol][row].getColor() == colorMatch || colorMatch == null)     //same color as previous
+                    {   
+                        colorMatch = board[currentCol][row].getColor();
+                        numConsecutive++;
+                        if(numConsecutive == 3) {
+                            for(int i = 0;i<3;i++) {
+                                board[currentCol+i][row+i].setColor(Color.GREEN);
+                            }
+                            return true;
+                        }
+                    }
+                    else if (board[currentCol][row].getColor() != colorMatch)    //different color as previous
+                    {                                   
+                        colorMatch = board[currentCol][row].getColor();
+                        numConsecutive = 1;
+                    }
                 }
                 currentCol--;
             }
@@ -245,30 +255,33 @@ public class Board {
             numConsecutive = 0;
         }
         
-        for (int row=3;row<NUM_ROWS;row++)
+        for (int row=2;row<NUM_ROWS;row++)
         {
             int currentRow = row;
             for (int col=NUM_COLUMNS-1;col>NUM_COLUMNS-2-row;col--)
             {
-                if (board[col][currentRow] == null)      //empty location
-                {        
-                    numConsecutive = 0;
-                }
-                else if (board[col][currentRow].getColor() == colorMatch || colorMatch == null)     //same color as previous
-                {   
-                    colorMatch = board[col][currentRow].getColor();
-                    numConsecutive++;
-                    if(numConsecutive == 3) {
-                        for(int i = 0;i<3;i++) {
-                            board[col+i][currentRow+i].setColor(Color.GREEN);
-                        }
-                        return true;
+                
+                if((row+1)%3 == 0) {
+                    if (board[col][currentRow] == null)      //empty location
+                    {        
+                        numConsecutive = 0;
                     }
-                }
-                else if (board[col][currentRow].getColor() != colorMatch)    //different color as previous
-                {                                   
-                    colorMatch = board[col][currentRow].getColor();
-                    numConsecutive = 1;
+                    else if (board[col][currentRow].getColor() == colorMatch || colorMatch == null)     //same color as previous
+                    {   
+                        colorMatch = board[col][currentRow].getColor();
+                        numConsecutive++;
+                        if(numConsecutive == 3) {
+                            for(int i = 0;i<3;i++) {
+                                board[col+i][currentRow+i].setColor(Color.GREEN);
+                            }
+                            return true;
+                        }
+                    }
+                    else if (board[col][currentRow].getColor() != colorMatch)    //different color as previous
+                    {                                   
+                        colorMatch = board[col][currentRow].getColor();
+                        numConsecutive = 1;
+                    }
                 }
                 currentRow--;
             }            
