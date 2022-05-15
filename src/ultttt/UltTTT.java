@@ -26,8 +26,8 @@ public class UltTTT extends JFrame implements Runnable {
             public void mousePressed(MouseEvent e) {
 
                 if (e.BUTTON1 == e.getButton() ) {
-                    if(!Board.won)
-                        Board.AddPiece(e.getX(),e.getY());
+                    if(!SubBoard.won)
+                        SubBoard.AddPiece(e.getX(),e.getY());
                 }
 
                 if (e.BUTTON3 == e.getButton()) {
@@ -47,7 +47,7 @@ public class UltTTT extends JFrame implements Runnable {
 
     addMouseMotionListener(new MouseMotionAdapter() {
         public void mouseMoved(MouseEvent e) {
-            Board.setMousePos(e.getX()-Window.getX(0),e.getY()-Window.getY(0));
+            SubBoard.setMousePos(e.getX()-Window.getX(0),e.getY()-Window.getY(0));
             repaint();
         }
     });
@@ -105,7 +105,7 @@ public class UltTTT extends JFrame implements Runnable {
             return;
         }
         
-              
+        SubBoard.Draw(g);
         Board.Draw(g);
 
         gOld.drawImage(image, 0, 0, null);
@@ -128,7 +128,7 @@ public class UltTTT extends JFrame implements Runnable {
     
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-        Board.Reset();
+        SubBoard.Reset();
         Player.Reset();
     }
 /////////////////////////////////////////////////////////////////////////
