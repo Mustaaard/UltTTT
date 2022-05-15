@@ -161,6 +161,7 @@ public class Board {
             int currentRow = row;
             for (int col=0;col<row+1;col++)
             {
+                
                 if((row+1)%3 == 0) {
                     if (board[col][currentRow] == null)      //empty location
                     {        
@@ -234,6 +235,7 @@ public class Board {
                     }
                     else if (board[currentCol][row].getColor() == colorMatch || colorMatch == null)     //same color as previous
                     {   
+                        
                         colorMatch = board[currentCol][row].getColor();
                         numConsecutive++;
                         if(numConsecutive == 3) {
