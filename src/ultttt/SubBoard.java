@@ -14,6 +14,9 @@ public class SubBoard {
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
     
+    public static int TopleftY = 1;
+    public static int TopleftX = 0;
+    
     public static int MouseXPos;
     public static int MouseYPos;
     
@@ -35,9 +38,10 @@ public class SubBoard {
         x -= Window.getX(0);
         y -= Window.getY(0);
         
-        if(x > 0 && x < Window.getWidth2()/3 && y > 0 && y < Window.getHeight2()/3){
+        if(x > TopleftX*Window.getWidth2()/3 && x < Window.getWidth2()/3+TopleftX*Window.getWidth2()/3 && 
+           y > TopleftY*Window.getHeight2()/3 && y < Window.getHeight2()/3+TopleftY*Window.getHeight2()/3) {
             x = x/xdelta;
-            y = y/ydelta;
+            y = (y-TopleftY*Window.getHeight2()/3)/ydelta;
             //System.out.println(x + " " + y);
             if(x < 0)
                 x = 0;
@@ -205,7 +209,8 @@ public class SubBoard {
             for (int zcol=0;zcol<NUM_COLUMNS;zcol++)        
             {
                 if (subboard[zrow][zcol] != null)
-                    subboard[zrow][zcol].draw(g, zrow, zcol,xdelta, ydelta);
+                    subboard[zrow][zcol].draw(g, Window.getY((zrow+1)*ydelta)+TopleftY*Window.getHeight2()/3,
+                                            Window.getX(zcol*xdelta)+5+TopleftX*Window.getWidth2()/3,xdelta, ydelta);
             }
         }
 
