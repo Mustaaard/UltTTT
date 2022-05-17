@@ -8,19 +8,24 @@ import static ultttt.Player.players;
 public class SubBoard {
     private final static int NUM_ROWS = 3;
     private final static int NUM_COLUMNS = 3;      
-    private static Piece subboard[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
-    public static boolean won = false;
-    private static String winner = "";
+    private Piece subboard[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
+    public boolean won = false;
+    private String winner = "";
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
     
-    public static int TopleftY = 1;
-    public static int TopleftX = 0;
+    public int TopleftY;
+    public int TopleftX;
     
     public static int MouseXPos;
     public static int MouseYPos;
     
-    public static void Reset() {
+    SubBoard(int x,int y) {
+        TopleftY = y;
+        TopleftX = x;
+    }
+    
+    public void Reset() {
 //clear the Subboard.
         for (int zrow=0;zrow<NUM_ROWS;zrow++)
             for (int zcol=0;zcol<NUM_COLUMNS;zcol++)
@@ -33,14 +38,14 @@ public class SubBoard {
         MouseYPos = y;
     }
     
-    public static void AddPiece(int x, int y) {
+    public void AddPiece(int x, int y) {
         
         x -= Window.getX(0);
         y -= Window.getY(0);
         
         if(x > TopleftX*Window.getWidth2()/3 && x < Window.getWidth2()/3+TopleftX*Window.getWidth2()/3 && 
            y > TopleftY*Window.getHeight2()/3 && y < Window.getHeight2()/3+TopleftY*Window.getHeight2()/3) {
-            x = x/xdelta;
+            x = (x-TopleftX*Window.getWidth2()/3)/xdelta;
             y = (y-TopleftY*Window.getHeight2()/3)/ydelta;
             //System.out.println(x + " " + y);
             if(x < 0)
@@ -71,7 +76,7 @@ public class SubBoard {
         }
     }
     
-    public static boolean checkWin() {
+    public boolean checkWin() {
         
         if(HorizontalCheckWin())
             return true;
@@ -82,7 +87,7 @@ public class SubBoard {
         return false;
     }
     
-    public static boolean HorizontalCheckWin() {
+    public boolean HorizontalCheckWin() {
         int numConsecutive = 0;
         Color colorMatch = null;
 
@@ -116,7 +121,7 @@ public class SubBoard {
         return false;
     }
     
-    public static boolean VerticalCheckWin() {
+    public boolean VerticalCheckWin() {
         int numConsecutive = 0;
         Color colorMatch = null;
 
@@ -150,7 +155,7 @@ public class SubBoard {
         return false;
     }
     
-    public static boolean DiagonalCheckWin() {
+    public boolean DiagonalCheckWin() {
         int numConsecutive = 0;
         Color colorMatch = null;
 
@@ -196,7 +201,7 @@ public class SubBoard {
         return false;
     }
     
-    public static void Draw(Graphics2D g) {
+    public void Draw(Graphics2D g) {
 //draw grid
         if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
             HighLight.getSection(MouseXPos,MouseYPos);
