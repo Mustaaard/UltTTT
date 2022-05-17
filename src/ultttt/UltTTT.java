@@ -11,10 +11,9 @@ import javax.swing.*;
 
 public class UltTTT extends JFrame implements Runnable {
     boolean animateFirstTime = true;
-    SubBoard boxes = new SubBoard(0,0);
     Image image;
     Graphics2D g;
-
+    
     public static void main(String[] args) {
         UltTTT frame = new UltTTT();
         frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
@@ -27,8 +26,8 @@ public class UltTTT extends JFrame implements Runnable {
             public void mousePressed(MouseEvent e) {
 
                 if (e.BUTTON1 == e.getButton() ) {
-                    //if(!SubBoard.won)
-                        //SubBoard.AddPiece(e.getX(),e.getY());
+                    if(!Board.box.won)
+                        Board.box.AddPiece(e.getX(),e.getY());
                 }
 
                 if (e.BUTTON3 == e.getButton()) {
@@ -48,7 +47,7 @@ public class UltTTT extends JFrame implements Runnable {
 
     addMouseMotionListener(new MouseMotionAdapter() {
         public void mouseMoved(MouseEvent e) {
-            SubBoard.setMousePos(e.getX()-Window.getX(0),e.getY()-Window.getY(0));
+            Board.setMousePos(e.getX()-Window.getX(0),e.getY()-Window.getY(0));
             repaint();
         }
     });
@@ -106,8 +105,8 @@ public class UltTTT extends JFrame implements Runnable {
             return;
         }
         
-        //SubBoard.Draw(g);
         Board.Draw(g);
+        Board.box.Draw(g);
 
         gOld.drawImage(image, 0, 0, null);
     }
@@ -129,7 +128,7 @@ public class UltTTT extends JFrame implements Runnable {
     
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-        //SubBoard.Reset();
+        Board.box.Reset();
         Player.Reset();
     }
 /////////////////////////////////////////////////////////////////////////
