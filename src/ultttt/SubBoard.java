@@ -236,11 +236,11 @@ public class SubBoard {
         g.drawString("O's Turn",Window.getX(0),60);
         }
         
-        if(won) {
+        /*if(won) {
             g.setColor(Color.black);
             g.setFont (new Font ("Arial",Font.PLAIN, 50));
             g.drawString(winner + " Wins", 200, 350);
-        }
+        }*/
         
     }
 }

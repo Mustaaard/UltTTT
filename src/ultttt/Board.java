@@ -7,8 +7,12 @@ import static ultttt.Player.players;
 
 public class Board {
     private final static int NUM_ROWS = 9;
-    private final static int NUM_COLUMNS = 9;      
-    private static Piece subboard[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
+    private final static int NUM_COLUMNS = 9;
+    
+    public static SubBoard[][] box = {{new SubBoard(0,0),new SubBoard(1,0),new SubBoard(2,0)},
+                                      {new SubBoard(0,1),new SubBoard(1,1),new SubBoard(2,1)},
+                                      {new SubBoard(0,2),new SubBoard(1,2),new SubBoard(2,2)}};
+    
     public static boolean won = false;
     private static String winner = "";
     private static int ydelta = Window.getHeight2()/9;
@@ -17,7 +21,7 @@ public class Board {
     public static int MouseXPos;
     public static int MouseYPos;
     
-    public static SubBoard box = new SubBoard(0,0);
+    
     
     public static void setMousePos(int x, int y) {
         MouseXPos = x;
