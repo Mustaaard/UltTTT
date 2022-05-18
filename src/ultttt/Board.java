@@ -38,13 +38,49 @@ public class Board {
     {
         if(HorizontalCheckWin())
             return true;
+        if(VerticalCheckWin())
+            return true;
+        if(DiagonalCheckWin())
+            return true;
         return false;
     }
     
     
     public static boolean HorizontalCheckWin() {
+        String colorMatch;
         for(int i = 0;i < 3;i++) {
-            if(box[i][0].won == true && box[i][1].won == true && box[i][2].won == true)
+            if(box[i][0].won == true && box[i][1].won == true && box[i][2].won == true) {
+                colorMatch = box[i][0].winner;
+                if(box[i][0].winner == colorMatch && box[i][1].winner == colorMatch && box[i][2].winner == colorMatch)
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean VerticalCheckWin() {
+        String colorMatch;
+        for(int i = 0;i < 3;i++) {
+            if(box[0][i].won == true && box[1][i].won == true && box[2][i].won == true) {
+                colorMatch = box[i][0].winner;
+                if(box[0][i].winner == colorMatch && box[1][i].winner == colorMatch && box[2][i].winner == colorMatch)
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean DiagonalCheckWin() {
+        String colorMatch;
+        if(box[0][0].won == true && box[1][1].won == true &&  box[2][2].won == true) {
+            colorMatch = box[0][0].winner;
+            if(box[0][0].winner == colorMatch && box[1][1].winner == colorMatch &&  box[2][2].winner == colorMatch)
+                return true;
+        }
+        
+        if(box[2][0].won == true && box[1][1].won == true &&  box[0][2].won == true) {
+            colorMatch = box[2][0].winner;
+            if(box[2][0].winner == colorMatch && box[1][1].winner == colorMatch &&  box[0][2].winner == colorMatch)
                 return true;
         }
         return false;
