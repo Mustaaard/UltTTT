@@ -6,8 +6,8 @@ import java.awt.*;
 import static ultttt.Player.players;
 
 public class Board {
-    private final static int NUM_ROWS = 9;
-    private final static int NUM_COLUMNS = 9;
+    private final static int NUM_ROWS = 3;
+    private final static int NUM_COLUMNS = 3;
     
     public static SubBoard[][] box = {{new SubBoard(0,0),new SubBoard(1,0),new SubBoard(2,0)},
                                       {new SubBoard(0,1),new SubBoard(1,1),new SubBoard(2,1)},
@@ -21,8 +21,33 @@ public class Board {
     public static int MouseXPos;
     public static int MouseYPos;
     
+    public static void Reset() {
+        for(int i = 0;i < 3;i++)
+            for(int o = 0;o < 3;o++)
+                box[i][o].Reset();
+        won = false;
+    }
+    
     public static void AddPiece(int indexX,int indexY,int x, int y) {
         box[indexY][indexX].AddPiece(x,y);
+        if(checkWin())
+            won = true;
+    }
+    
+    public static boolean checkWin()
+    {
+        if(HorizontalCheckWin())
+            return true;
+        return false;
+    }
+    
+    
+    public static boolean HorizontalCheckWin() {
+        for(int i = 0;i < 3;i++) {
+            if(box[i][0].won == true && box[i][1].won == true && box[i][2].won == true)
+                return true;
+        }
+        return false;
     }
     
     public static void setMousePos(int x, int y) {
@@ -37,7 +62,7 @@ public class Board {
             HighLight.draw(g);
         }
         
-        for (int zi = 0;zi<NUM_ROWS;zi++)
+        for (int zi = 0;zi<NUM_ROWS*3;zi++)
         {
             g.setColor(Color.black);
             if(zi%3 == 0)
@@ -46,7 +71,7 @@ public class Board {
                     Window.getX(Window.getWidth2()),Window.getY(zi*ydelta));
         }
         
-        for (int zi = 1;zi<NUM_COLUMNS;zi++)
+        for (int zi = 1;zi<NUM_COLUMNS*3;zi++)
         {
             g.setColor(Color.black);
             if(zi%3 == 0)
@@ -54,5 +79,12 @@ public class Board {
             g.drawLine(Window.getX(zi*xdelta),Window.getY(0),
                     Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
         }
+        
+        if(won) {
+            g.setColor(Color.black);
+            g.setFont (new Font ("Arial",Font.PLAIN, 50));
+            g.drawString(winner + " Wins", 200, 350);
+        }
+        
     }
 }

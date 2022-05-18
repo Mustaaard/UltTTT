@@ -10,7 +10,7 @@ public class SubBoard {
     private final static int NUM_COLUMNS = 3;      
     private Piece subboard[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
     public boolean won = false;
-    private String winner = "";
+    public String winner;
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
     
@@ -43,7 +43,8 @@ public class SubBoard {
     }
     
     public void AddPiece(int x, int y) {
-        
+        if(won)
+            return;
         x -= Window.getX(0);
         y -= Window.getY(0);
         

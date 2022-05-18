@@ -26,10 +26,11 @@ public class UltTTT extends JFrame implements Runnable {
             public void mousePressed(MouseEvent e) {
 
                 if (e.BUTTON1 == e.getButton() ) {
-                    for(int i = 0;i < 3;i++) {
-                        for(int o = 0;o < 3;o++) {
-                            if(!Board.box[i][o].won)
-                                Board.AddPiece(i,o,e.getX(),e.getY());
+                    if(!Board.won) {
+                        for(int i = 0;i < 3;i++) {
+                            for(int o = 0;o < 3;o++) {
+                                    Board.AddPiece(i,o,e.getX(),e.getY());
+                            }
                         }
                     }
                 }
@@ -133,9 +134,7 @@ public class UltTTT extends JFrame implements Runnable {
     
 /////////////////////////////////////////////////////////////////////////
     public void reset() {
-        for(int i = 0;i < 3;i++)
-            for(int o = 0;o < 3;o++)
-                Board.box[i][o].Reset();
+        Board.Reset();
         Player.Reset();
     }
 /////////////////////////////////////////////////////////////////////////
