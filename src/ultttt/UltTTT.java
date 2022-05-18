@@ -29,7 +29,7 @@ public class UltTTT extends JFrame implements Runnable {
                     for(int i = 0;i < 3;i++) {
                         for(int o = 0;o < 3;o++) {
                             if(!Board.box[i][o].won)
-                                Board.box[i][o].AddPiece(e.getX(),e.getY());
+                                Board.AddPiece(i,o,e.getX(),e.getY());
                         }
                     }
                 }

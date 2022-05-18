@@ -21,7 +21,9 @@ public class Board {
     public static int MouseXPos;
     public static int MouseYPos;
     
-    
+    public static void AddPiece(int indexX,int indexY,int x, int y) {
+        box[indexY][indexX].AddPiece(x,y);
+    }
     
     public static void setMousePos(int x, int y) {
         MouseXPos = x;
