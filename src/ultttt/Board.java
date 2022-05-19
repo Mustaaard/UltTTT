@@ -14,7 +14,7 @@ public class Board {
                                       {new SubBoard(0,2),new SubBoard(1,2),new SubBoard(2,2)}};
     
     public static boolean won = false;
-    private static String winner = "";
+    public static String winner = "";
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
     
@@ -51,8 +51,10 @@ public class Board {
         for(int i = 0;i < 3;i++) {
             if(box[i][0].won == true && box[i][1].won == true && box[i][2].won == true) {
                 colorMatch = box[i][0].winner;
-                if(box[i][0].winner == colorMatch && box[i][1].winner == colorMatch && box[i][2].winner == colorMatch)
+                if(box[i][0].winner == colorMatch && box[i][1].winner == colorMatch && box[i][2].winner == colorMatch) {
+                    winner = colorMatch;
                     return true;
+                }
             }
         }
         return false;
@@ -63,8 +65,10 @@ public class Board {
         for(int i = 0;i < 3;i++) {
             if(box[0][i].won == true && box[1][i].won == true && box[2][i].won == true) {
                 colorMatch = box[i][0].winner;
-                if(box[0][i].winner == colorMatch && box[1][i].winner == colorMatch && box[2][i].winner == colorMatch)
+                if(box[0][i].winner == colorMatch && box[1][i].winner == colorMatch && box[2][i].winner == colorMatch) {
+                    winner = colorMatch;
                     return true;
+                }
             }
         }
         return false;
@@ -74,14 +78,18 @@ public class Board {
         String colorMatch;
         if(box[0][0].won == true && box[1][1].won == true &&  box[2][2].won == true) {
             colorMatch = box[0][0].winner;
-            if(box[0][0].winner == colorMatch && box[1][1].winner == colorMatch &&  box[2][2].winner == colorMatch)
+            if(box[0][0].winner == colorMatch && box[1][1].winner == colorMatch &&  box[2][2].winner == colorMatch) {
+                winner = colorMatch;
                 return true;
+            }
         }
         
         if(box[2][0].won == true && box[1][1].won == true &&  box[0][2].won == true) {
             colorMatch = box[2][0].winner;
-            if(box[2][0].winner == colorMatch && box[1][1].winner == colorMatch &&  box[0][2].winner == colorMatch)
+            if(box[2][0].winner == colorMatch && box[1][1].winner == colorMatch &&  box[0][2].winner == colorMatch) {
+                winner = colorMatch;
                 return true;
+            }
         }
         return false;
     }
@@ -114,12 +122,6 @@ public class Board {
                 g.setColor(Color.red);
             g.drawLine(Window.getX(zi*xdelta),Window.getY(0),
                     Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
-        }
-        
-        if(won) {
-            g.setColor(Color.black);
-            g.setFont (new Font ("Arial",Font.PLAIN, 50));
-            g.drawString(winner + " Wins", 200, 350);
         }
         
     }
