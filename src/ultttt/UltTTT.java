@@ -121,6 +121,11 @@ public class UltTTT extends JFrame implements Runnable {
             g.setFont (new Font ("Arial",Font.PLAIN, 50));
             g.drawString(Board.winner + " Wins", 200, 350);
         }
+        else if(Board.draw) {
+            g.setColor(Color.black);
+            g.setFont (new Font ("Arial",Font.PLAIN, 50));
+            g.drawString("Draw", 200, 350);
+        }
         
         gOld.drawImage(image, 0, 0, null);
     }

@@ -14,6 +14,7 @@ public class Board {
                                       {new SubBoard(0,2),new SubBoard(1,2),new SubBoard(2,2)}};
     
     public static boolean won = false;
+    public static boolean draw = false;
     public static String winner = "";
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
@@ -48,6 +49,8 @@ public class Board {
         }
         if(checkWin())
             won = true;
+        if(checkDraw())
+            draw = true;
     }
     
     public static boolean checkWin()
@@ -61,6 +64,17 @@ public class Board {
         return false;
     }
     
+    public static boolean checkDraw()
+    {
+        for(int i = 0;i < 3;i++)
+            for(int o = 0;o < 3;o++) {
+                if(box[i][o].won == false )
+                    return false;
+                if(box[i][o].checkDraw() == false)
+                    return false;
+            }
+        return true;
+    }
     
     public static boolean HorizontalCheckWin() {
         String colorMatch;
