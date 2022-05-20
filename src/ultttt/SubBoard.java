@@ -85,6 +85,14 @@ public class SubBoard {
         }
     }
     
+    public boolean checkDraw() {
+        for(int i = 0;i < 3;i++)
+            for(int o = 0;o < 3;o++)
+                if(subboard[i][o] == null)
+                    return false;
+        return true;
+    }
+    
     public boolean checkWin() {
         
         if(HorizontalCheckWin())

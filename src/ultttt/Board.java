@@ -36,6 +36,12 @@ public class Board {
                 for(int i = 0;i < 3;i++)
                     for(int o = 0;o < 3;o++)
                         box[i][o].on = false;
+                if(box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].won ||
+                   box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].checkDraw()) {
+                    for(int i = 0;i < 3;i++)
+                        for(int o = 0;o < 3;o++)
+                            box[i][o].on = true;
+                }
                 box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].on = true;
                 box[indexY][indexX].NextX = -1;
             }
