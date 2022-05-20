@@ -22,12 +22,20 @@ public class Piece {
         color = _color;
     }
 
-    public void draw(Graphics2D g,int row,int column,int xdelta,int ydelta) {
-        
-        g.setFont (new Font ("Arial",Font.PLAIN, 80));
-        g.setColor(color);
-        g.drawString(hahayoudontknowwhatthisvariabledoes,column,row);
-        g.setColor(Color.black);
+    public void draw(Graphics2D g, int row, int column, int xdelta, int ydelta, boolean big, boolean notAgain, String winner) {
+        if (!big) {
+            g.setFont(new Font("Arial", Font.PLAIN, 80));
+            g.setColor(Color.black);
+            g.drawString(hahayoudontknowwhatthisvariabledoes, column, row);
+        } else if (big && notAgain) {
+            g.setFont(new Font("Arial", Font.PLAIN, 250));
+            g.setColor(Color.black);
+            if (winner.equals("Red")) {
+                g.drawString("X", column + 7, row);
+            } else {
+                g.drawString("O", column + 7, row);
+            }
+        }
     }
     
 }

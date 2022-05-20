@@ -218,14 +218,23 @@ public class SubBoard {
         }
         
         //code that draws the pieces
-        for (int zrow=0;zrow<NUM_ROWS;zrow++)
-        {
-            for (int zcol=0;zcol<NUM_COLUMNS;zcol++)        
-            {
-                if (subboard[zrow][zcol] != null)
-                    subboard[zrow][zcol].draw(g, Window.getY((zrow+1)*ydelta)+TopleftY*ydelta*3,
-                                            Window.getX(zcol*xdelta)+5+TopleftX*xdelta*3,xdelta, ydelta);
+        boolean tempWon = won;
+        boolean notAgain = true;
+        for (int zrow = 0; zrow < NUM_ROWS; zrow++) {
+            for (int zcol = 0; zcol < NUM_COLUMNS; zcol++) {
+                if (subboard[zrow][zcol] != null) {
+                    subboard[zrow][zcol].draw(g, Window.getY((zrow + 1) * ydelta) + TopleftY * ydelta * 3,
+                            Window.getX(zcol * xdelta) + 5 + TopleftX * xdelta * 3, xdelta, ydelta, false, notAgain, winner);
+
+                    if (won) {
+                        subboard[zrow][zcol].draw(g, Window.getY((2 + 1) * ydelta) + TopleftY * ydelta * 3,
+                                Window.getX(0 * xdelta) + 5 + TopleftX * xdelta * 3, xdelta, ydelta, true, notAgain, winner);
+                        won = false;
+                        notAgain = false;
+                    }
+                }
             }
+            won = tempWon;
         }
 
         if (players[0]==Player.getCurrentPlayer())
