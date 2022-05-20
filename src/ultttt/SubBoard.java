@@ -10,6 +10,7 @@ public class SubBoard {
     private final static int NUM_COLUMNS = 3;      
     private Piece subboard[][] = new Piece[NUM_ROWS][NUM_COLUMNS];
     public boolean won = false;
+    public boolean draw = false;
     public String winner;
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
@@ -72,6 +73,7 @@ public class SubBoard {
                 subboard[y][x] = new Piece(Player.getCurrentPlayer().getColor(),Player.getCurrentPlayer().getLetter());
                 if(checkWin()) {
                     won = true;
+                    System.out.println(TopleftX + " " + TopleftY);
                     if(Player.getCurrentPlayer().getColor() == Color.RED) {
                         winner = "Red";
                     }
@@ -79,8 +81,12 @@ public class SubBoard {
                         winner = "Blue";
                     }
                 }
-                    
-                Player.switchCurrentPlayer();
+                else if(checkDraw()) {
+                    System.out.println(TopleftX + " " + TopleftY);
+                    draw = true;
+                }
+                if(!won)
+                    Player.switchCurrentPlayer();
             }
         }
     }
