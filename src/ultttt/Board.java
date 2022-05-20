@@ -29,7 +29,8 @@ public class Board {
     }
     
     public static void AddPiece(int indexX,int indexY,int x, int y) {
-        box[indexY][indexX].AddPiece(x,y);
+        if(box[indexY][indexX].won == false)
+            box[indexY][indexX].AddPiece(x,y);
         if(checkWin())
             won = true;
     }

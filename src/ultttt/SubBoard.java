@@ -43,8 +43,6 @@ public class SubBoard {
     }
     
     public void AddPiece(int x, int y) {
-        if(won)
-            return;
         x -= Window.getX(0);
         y -= Window.getY(0);
         
