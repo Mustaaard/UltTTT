@@ -75,10 +75,10 @@ public class SubBoard {
                     won = true;
                     System.out.println(TopleftX + " " + TopleftY);
                     if(Player.getCurrentPlayer().getColor() == Color.RED) {
-                        winner = "Red";
+                        winner = "X";
                     }
                     else {
-                        winner = "Blue";
+                        winner = "O";
                     }
                 }
                 else if(checkDraw()) {

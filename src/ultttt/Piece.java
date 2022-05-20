@@ -30,7 +30,7 @@ public class Piece {
         } else if (big && notAgain) {
             g.setFont(new Font("Arial", Font.PLAIN, 250));
             g.setColor(Color.black);
-            if (winner.equals("Red")) {
+            if (winner.equals("X")) {
                 g.drawString("X", column + 7, row);
             } else {
                 g.drawString("O", column + 7, row);
