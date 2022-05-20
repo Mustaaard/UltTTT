@@ -29,8 +29,17 @@ public class Board {
     }
     
     public static void AddPiece(int indexX,int indexY,int x, int y) {
-        if(box[indexY][indexX].won == false)
+        if(box[indexY][indexX].won == false && box[indexY][indexX].on) {
             box[indexY][indexX].AddPiece(x,y);
+            if(box[indexY][indexX].NextX != -1) {
+                System.out.println(box[indexY][indexX].NextX+" "+box[indexY][indexX].NextY);
+                for(int i = 0;i < 3;i++)
+                    for(int o = 0;o < 3;o++)
+                        box[i][o].on = false;
+                box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].on = true;
+                box[indexY][indexX].NextX = -1;
+            }
+        }
         if(checkWin())
             won = true;
     }

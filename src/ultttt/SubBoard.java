@@ -14,8 +14,11 @@ public class SubBoard {
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
     
+    public boolean on = true;
     public int TopleftY = 0;
     public int TopleftX = 0;
+    public int NextY;
+    public int NextX = -1;
     
     public static int MouseXPos;
     public static int MouseYPos;
@@ -35,6 +38,7 @@ public class SubBoard {
             for (int zcol=0;zcol<NUM_COLUMNS;zcol++)
                 subboard[zrow][zcol] = null;
         won = false;
+        on =true;
     }
     
     public void setMousePos(int x, int y) {
@@ -63,6 +67,8 @@ public class SubBoard {
             
             
             if(subboard[y][x] == null) {
+                NextY = y;
+                NextX = x;
                 subboard[y][x] = new Piece(Player.getCurrentPlayer().getColor(),Player.getCurrentPlayer().getLetter());
                 if(checkWin()) {
                     won = true;
