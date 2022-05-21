@@ -73,7 +73,7 @@ public class SubBoard {
                 subboard[y][x] = new Piece(Player.getCurrentPlayer().getColor(),Player.getCurrentPlayer().getLetter());
                 if(checkWin()) {
                     won = true;
-                    System.out.println(TopleftX + " " + TopleftY);
+                    //System.out.println(TopleftX + " " + TopleftY);
                     if(Player.getCurrentPlayer().getColor() == Color.RED) {
                         winner = "X";
                     }
@@ -82,7 +82,7 @@ public class SubBoard {
                     }
                 }
                 else if(checkDraw()) {
-                    System.out.println(TopleftX + " " + TopleftY);
+                    System.out.println(TopleftX + " " + TopleftY + " " + draw);
                     draw = true;
                 }
                 if(!won)

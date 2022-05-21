@@ -29,6 +29,7 @@ public class Board {
             for(int o = 0;o < 3;o++)
                 box[i][o].Reset();
         won = false;
+        draw = false;
     }
     
     public static void AddPiece(int indexX,int indexY,int x, int y) {
@@ -51,7 +52,7 @@ public class Board {
         }
         if(checkWin())
             won = true;
-        if(checkDraw())
+        else if(checkDraw() == true)
             draw = true;
     }
     
@@ -69,12 +70,9 @@ public class Board {
     public static boolean checkDraw()
     {
         for(int i = 0;i < 3;i++)
-            for(int o = 0;o < 3;o++) {
-                if(box[i][o].won == false )
+            for(int o = 0;o < 3;o++)
+                if(box[i][o].won == false && box[i][o].draw == false)
                     return false;
-                if(box[i][o].draw == false)
-                    return false;
-            }
         return true;
     }
     
