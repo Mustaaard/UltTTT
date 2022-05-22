@@ -18,6 +18,8 @@ public class Board {
     public static String winner = "";
     private static int ydelta = Window.getHeight2()/9;
     private static int xdelta = Window.getWidth2()/9;
+    private static int nextX;
+    private static int nextY;
     
     public static boolean freewillisamyth = false;
     
@@ -30,25 +32,36 @@ public class Board {
                 box[i][o].Reset();
         won = false;
         draw = false;
+        freewillisamyth = false;
     }
     
     public static void AddPiece(int indexX,int indexY,int x, int y) {
         if(box[indexY][indexX].won == false && box[indexY][indexX].on) {
             box[indexY][indexX].AddPiece(x,y);
-            /*if(box[indexY][indexX].NextX != -1) {
-                System.out.println(box[indexY][indexX].NextX+" "+box[indexY][indexX].NextY);
+            if(box[indexY][indexX].NextX != -1) {
+                
+                freewillisamyth = true;
+                
                 for(int i = 0;i < 3;i++)
                     for(int o = 0;o < 3;o++)
                         box[i][o].on = false;
+                
                 if(box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].won ||
                    box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].checkDraw()) {
+                    
+                    freewillisamyth = false;
+                    
                     for(int i = 0;i < 3;i++)
                         for(int o = 0;o < 3;o++)
                             box[i][o].on = true;
                 }
+                
                 box[box[indexY][indexX].NextY][box[indexY][indexX].NextX].on = true;
+                nextX = box[indexY][indexX].NextX;
+                nextY = box[indexY][indexX].NextY;
+                
                 box[indexY][indexX].NextX = -1;
-            }*/
+            }
         }
         if(checkWin())
             won = true;
@@ -131,9 +144,15 @@ public class Board {
     
     public static void Draw(Graphics2D g) {
 //draw grid
-        if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
-            HighLight.getSection(MouseXPos,MouseYPos);
+        if(freewillisamyth) {
+            HighLight.setSection(nextX,nextY);
             HighLight.draw(g);
+        }
+        else if(!freewillisamyth) {
+            if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
+                HighLight.getSection(MouseXPos,MouseYPos);
+                HighLight.draw(g);
+            }
         }
         
         for (int zi = 0;zi<NUM_ROWS*3;zi++)

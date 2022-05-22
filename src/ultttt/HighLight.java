@@ -23,6 +23,11 @@ public class HighLight {
         sectionY = sections[y][x]/3;
     }
     
+    public static void setSection(int x,int y) {
+        sectionX = x;
+        sectionY = y;
+    }
+    
     public static void draw(Graphics2D g) {
         g.setColor(Color.yellow);
         g.fillRect(Window.getX(0+xdelta*sectionX),Window.getY(0+ydelta*sectionY),xdelta,ydelta);
