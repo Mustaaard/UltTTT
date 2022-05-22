@@ -227,8 +227,8 @@ public class SubBoard {
     public void Draw(Graphics2D g) {
 //draw grid
         if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
-            HighLight.getSection(MouseXPos,MouseYPos);
-            HighLight.draw(g);
+            //HighLight.getSection(MouseXPos,MouseYPos);
+            HighLight.draw(g,true);
         }
         
         //code that draws the pieces

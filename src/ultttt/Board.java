@@ -146,12 +146,12 @@ public class Board {
 //draw grid
         if(freewillisamyth) {
             HighLight.setSection(nextX,nextY);
-            HighLight.draw(g);
+            HighLight.draw(g,false);
         }
         else if(!freewillisamyth) {
             if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
-                HighLight.getSection(MouseXPos,MouseYPos);
-                HighLight.draw(g);
+                //HighLight.getSection(MouseXPos,MouseYPos);
+                HighLight.draw(g,true);
             }
         }
         

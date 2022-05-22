@@ -24,16 +24,17 @@ public class Piece {
 
     public void draw(Graphics2D g, int row, int column, int xdelta, int ydelta, boolean big, boolean notAgain, String winner) {
         if (!big) {
-            g.setFont(new Font("Arial", Font.PLAIN, 80));
+            g.setFont(new Font("Arial", Font.PLAIN, 78));
             g.setColor(Color.black);
-            g.drawString(hahayoudontknowwhatthisvariabledoes, column, row);
+            g.drawString(hahayoudontknowwhatthisvariabledoes, column, row-1);
         } else if (big && notAgain) {
-            g.setFont(new Font("Arial", Font.PLAIN, 250));
             g.setColor(Color.black);
             if (winner.equals("X")) {
+                g.setFont(new Font("Arial", Font.PLAIN, 250));
                 g.drawString("X", column + 7, row);
             } else {
-                g.drawString("O", column + 7, row);
+                g.setFont(new Font("Arial", Font.PLAIN, 241));
+                g.drawString("O", column + 7, row-3);
             }
         }
     }

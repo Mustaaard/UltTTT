@@ -28,8 +28,11 @@ public class HighLight {
         sectionY = y;
     }
     
-    public static void draw(Graphics2D g) {
-        g.setColor(Color.yellow);
-        g.fillRect(Window.getX(0+xdelta*sectionX),Window.getY(0+ydelta*sectionY),xdelta,ydelta);
+    public static void draw(Graphics2D g, boolean wholeBoard) {
+        g.setColor(Color.white);
+        if (!wholeBoard)
+            g.fillRect(Window.getX(0+xdelta*sectionX),Window.getY(0+ydelta*sectionY),xdelta,ydelta);
+        else
+            g.fillRect(23, 70, Window.getWidth2(),Window.getHeight2());
     }
 }
