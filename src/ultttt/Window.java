@@ -5,8 +5,8 @@ package ultttt;
 
 
 public class Window {
-    private static final int XBORDER = 15;
-//    private static final int YBORDER = 20;
+    private static final int XBORDER = 15
+;//    private static final int YBORDER = 20;
     private static final int TOP_BORDER = 40;
     private static final int BOTTOM_BORDER = 20;
     private static final int YTITLE = 30;

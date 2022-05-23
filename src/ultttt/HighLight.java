@@ -29,9 +29,23 @@ public class HighLight {
     }
     
     public static void draw(Graphics2D g, boolean wholeBoard) {
+        int pointoffset = 0;
+        int widthoffset = 0;
+        if(sectionX == 0) {
+            pointoffset = 1;
+            widthoffset = 2;
+        }
+        else if(sectionX == 1) {
+            pointoffset = -1;
+            widthoffset = 3;
+        }
+        else if(sectionX == 2) {
+            pointoffset = -3;
+            widthoffset = -3;
+        }
         g.setColor(Color.white);
         if (!wholeBoard)
-            g.fillRect(Window.getX(0+xdelta*sectionX),Window.getY(0+ydelta*sectionY),xdelta,ydelta);
+            g.fillRect(Window.getX(0+xdelta*sectionX)+pointoffset,Window.getY(0+ydelta*sectionY),xdelta-widthoffset,ydelta);
         else
             g.fillRect(23, 70, Window.getWidth2(),Window.getHeight2());
     }
