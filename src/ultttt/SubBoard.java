@@ -228,7 +228,7 @@ public class SubBoard {
 //draw grid
         if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
             //HighLight.getSection(MouseXPos,MouseYPos);
-            HighLight.draw(g,true);
+            HighLight.draw(g,false);
         }
         
         //code that draws the pieces
@@ -253,15 +253,15 @@ public class SubBoard {
 
         if (players[0]==Player.getCurrentPlayer())
         {
-        g.setColor(Color.red);
-        g.setFont (new Font ("Arial",Font.PLAIN, 25));
-        g.drawString("X's Turn",Window.getWidth2()-60,60);
+        g.setColor(Color.white);
+        g.setFont (new Font ("Papyrus",Font.PLAIN, 25));
+        g.drawString("X's Turn",Window.getWidth2()-325,60);
         }
         else if (players[1]==Player.getCurrentPlayer())
         {
-        g.setColor(Color.blue);
-        g.setFont (new Font ("Arial",Font.PLAIN, 25));
-        g.drawString("O's Turn",Window.getX(0),60);
+        g.setColor(Color.white);
+        g.setFont (new Font ("Ink Free",Font.PLAIN, 25));
+        g.drawString("O's Turn",Window.getWidth2()-325,60);
         }
         
         /*if(won) {
