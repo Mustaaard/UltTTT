@@ -20,7 +20,7 @@ public class UltTTT extends JFrame implements Runnable {
     Graphics2D g;
     
     sound bfgSound = null;
-    sound missileSound = null;
+    sound boomSound = null;
     
     public static void main(String[] args) {
         UltTTT frame = new UltTTT();
@@ -37,6 +37,7 @@ public class UltTTT extends JFrame implements Runnable {
                     if(!Board.won) {
                         for(int i = 0;i < 3;i++) {
                             for(int o = 0;o < 3;o++) {
+                                boomSound = new sound("Boom.wav");
                                     Board.AddPiece(i,o,e.getX(),e.getY());
                             }
                         }
@@ -169,11 +170,11 @@ public class UltTTT extends JFrame implements Runnable {
             }
 
             reset();
-            bfgSound = new sound("RipandTear.wav");
+            bfgSound = new sound("ff.wav");
             
-            if (bfgSound.donePlaying == true) {
+            if (bfgSound.donePlaying && bfgSound.stopPlaying) {
                 System.out.println("done");
-                bfgSound = new sound("RipandTear.wav");
+                bfgSound = new sound("ff.wav");
             }
 
         }
