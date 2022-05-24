@@ -43,7 +43,7 @@ public class HighLight {
             pointoffset = -3;
             widthoffset = -3;
         }
-        g.setColor(Color.white);
+        g.setColor(Color.yellow);
         if (!wholeBoard)
             g.fillRect(Window.getX(0+xdelta*sectionX)+pointoffset,Window.getY(0+ydelta*sectionY),xdelta-widthoffset,ydelta);
         else

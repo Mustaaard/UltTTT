@@ -26,8 +26,8 @@ public class Piece {
         if (big && notAgain) {
             g.setColor(Color.green);
             if (winner.equals("X")) {
-                g.setFont(new Font("Papyrus", Font.PLAIN, 250));
-                g.drawString("X", column + 7, row);
+                g.setFont(new Font("Papyrus", Font.PLAIN, 180));
+                g.drawString("X", column + 30, row-32);
             } else {
                 g.setFont(new Font("Ink Free", Font.PLAIN, 241));
                 g.drawString("O", column + 7, row - 3);
