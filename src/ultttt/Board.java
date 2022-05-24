@@ -107,17 +107,8 @@ public class Board {
         String colorMatch;
         for(int i = 0;i < 3;i++) {
             if(box[0][i].won == true && box[1][i].won == true && box[2][i].won == true) {
-                colorMatch = box[i][0].winner;
+                colorMatch = box[0][i].winner;
                 if(box[0][i].winner == colorMatch && box[1][i].winner == colorMatch && box[2][i].winner == colorMatch) {
-                    winner = colorMatch;
-                    return true;
-                }
-            }
-        }
-        if(box[0][1].won == true && box[1][1].won == true && box[2][1].won == true) {
-            colorMatch = box[0][1].winner;
-            if(box[0][1].won == true && box[1][1].won == true && box[2][1].won == true) {
-                if(box[0][1].winner == colorMatch && box[1][1].winner == colorMatch && box[2][1].winner == colorMatch) {
                     winner = colorMatch;
                     return true;
                 }
