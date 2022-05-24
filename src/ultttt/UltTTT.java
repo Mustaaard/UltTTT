@@ -171,8 +171,10 @@ public class UltTTT extends JFrame implements Runnable {
             reset();
             bfgSound = new sound("RipandTear.wav");
             
-            if (bfgSound.donePlaying == false)       
-            bfgSound = new sound("RipandTear.wav");
+            if (bfgSound.donePlaying == true) {
+                System.out.println("done");
+                bfgSound = new sound("RipandTear.wav");
+            }
 
         }
     }
