@@ -16,11 +16,13 @@ import javax.swing.*;
 
 public class UltTTT extends JFrame implements Runnable {
     boolean animateFirstTime = true;
+    boolean winfirst=true;
     Image image;
     Graphics2D g;
     
     sound bfgSound = null;
     sound boomSound = null;
+    sound cSound = null;
     
     public static void main(String[] args) {
         UltTTT frame = new UltTTT();
@@ -126,13 +128,18 @@ public class UltTTT extends JFrame implements Runnable {
                 Board.box[i][o].Draw(g);
         
         if(Board.won) {
+            if (winfirst) {
+            winfirst = false;
+            bfgSound.stopPlaying = !bfgSound.stopPlaying;
+            cSound = new sound("win.wav");
+            }
             g.setColor(Color.red);
             g.setFont (new Font ("Impact",Font.PLAIN, 150));
             g.drawString(Board.winner + " Wins", 100, 350);
         }
         else if(Board.draw) {
             g.setColor(Color.red);
-            g.setFont (new Font ("Impact",Font.PLAIN, 150));
+            g.setFont (new Font ("Arial",Font.PLAIN, 150));
             g.drawString("Draw", 100, 350);
         }
         
@@ -158,6 +165,9 @@ public class UltTTT extends JFrame implements Runnable {
     public void reset() {
         Board.Reset();
         Player.Reset();
+        if (bfgSound.stopPlaying = !bfgSound.stopPlaying)
+        bfgSound = new sound("ff.wav");
+        
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -172,10 +182,10 @@ public class UltTTT extends JFrame implements Runnable {
             reset();
             bfgSound = new sound("ff.wav");
             
-            if (bfgSound.donePlaying && bfgSound.stopPlaying) {
-                System.out.println("done");
-                bfgSound = new sound("ff.wav");
-            }
+//            if (bfgSound.donePlaying && bfgSound.stopPlaying) {
+//                System.out.println("done");
+//                bfgSound = new sound("ff.wav");
+//            }
 
         }
     }

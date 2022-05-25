@@ -38,7 +38,7 @@ public class Board {
     public static void AddPiece(int indexX,int indexY,int x, int y) {
         if(box[indexY][indexX].won == false && box[indexY][indexX].on) {
             box[indexY][indexX].AddPiece(x,y);
-            if(box[indexY][indexX].NextX != -1) {
+            /*if(box[indexY][indexX].NextX != -1) {
                 
                 freewillisamyth = true;
                 
@@ -61,7 +61,7 @@ public class Board {
                 nextY = box[indexY][indexX].NextY;
                 
                 box[indexY][indexX].NextX = -1;
-            }
+            }*/
         }
         if(checkWin())
             won = true;
