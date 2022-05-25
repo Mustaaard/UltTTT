@@ -21,8 +21,8 @@ public class UltTTT extends JFrame implements Runnable {
     Graphics2D g;
     
     sound bfgSound = null;
+    sound NumberOneVictoryRoyale = null;
     sound boomSound = null;
-    sound cSound = null;
     
     public static void main(String[] args) {
         UltTTT frame = new UltTTT();
@@ -76,6 +76,7 @@ public class UltTTT extends JFrame implements Runnable {
                 } else if (e.VK_LEFT == e.getKeyCode()) {
                 } else if (e.VK_RIGHT == e.getKeyCode()) {
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
+                    bfgSound.stopPlaying = !bfgSound.stopPlaying;
                     reset();
                 }
                 repaint();
@@ -131,7 +132,7 @@ public class UltTTT extends JFrame implements Runnable {
             if (winfirst) {
             winfirst = false;
             bfgSound.stopPlaying = !bfgSound.stopPlaying;
-            cSound = new sound("win.wav");
+            NumberOneVictoryRoyale = new sound("win.wav");
             }
             g.setColor(Color.red);
             g.setFont (new Font ("Impact",Font.PLAIN, 150));
@@ -165,9 +166,10 @@ public class UltTTT extends JFrame implements Runnable {
     public void reset() {
         Board.Reset();
         Player.Reset();
-        if (bfgSound.stopPlaying = !bfgSound.stopPlaying)
+        if(NumberOneVictoryRoyale != null)
+            NumberOneVictoryRoyale.stopPlaying = !NumberOneVictoryRoyale.stopPlaying;
+        NumberOneVictoryRoyale = null;
         bfgSound = new sound("ff.wav");
-        
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
@@ -180,12 +182,7 @@ public class UltTTT extends JFrame implements Runnable {
             }
 
             reset();
-            bfgSound = new sound("ff.wav");
             
-//            if (bfgSound.donePlaying && bfgSound.stopPlaying) {
-//                System.out.println("done");
-//                bfgSound = new sound("ff.wav");
-//            }
 
         }
     }
