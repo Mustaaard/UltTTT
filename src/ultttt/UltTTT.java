@@ -187,6 +187,7 @@ public class UltTTT extends JFrame implements Runnable {
             g.drawString("PRESS E TO ACTIVATE EXTRA TURN MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 90);
             g.setColor(Color.white);
             g.drawString("PRESS SPACE TO PLAY", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 110);
+            g.drawString("PRESS ESCAPE TO RESTART", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 130);
         }
         
         for(int i = 0;i < 3;i++)

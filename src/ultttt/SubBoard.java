@@ -48,49 +48,51 @@ public class SubBoard {
     }
     
     public void AddPiece(int x, int y) {
-        x -= Window.getX(0);
-        y -= Window.getY(0);
-        
-        if(x > TopleftX*Window.getWidth2()/3 && x < Window.getWidth2()/3+TopleftX*Window.getWidth2()/3 && 
-           y > TopleftY*Window.getHeight2()/3 && y < Window.getHeight2()/3+TopleftY*Window.getHeight2()/3) {
-            x = (x-TopleftX*Window.getWidth2()/3)/xdelta;
-            y = (y-TopleftY*Window.getHeight2()/3)/ydelta;
-            //System.out.println(x + " " + y);
-            if(x < 0)
-                x = 0;
-            else if(x > NUM_ROWS-1)
-                x = NUM_ROWS-1;
-            if(y < 0)
-                y = 0;
-            else if(y > NUM_ROWS-1)
-                y = NUM_ROWS-1;
-            //"falling" piece code
-            
-            
-            if(subboard[y][x] == null) {
-                NextY = y;
-                NextX = x;
-                subboard[y][x] = new Piece(Player.getCurrentPlayer().getColor(),Player.getCurrentPlayer().getLetter());
-                if(checkWin()) {
-                    won = true;
-                    //System.out.println(TopleftX + " " + TopleftY);
-                    if(Player.getCurrentPlayer().getColor() == Color.RED) {
-                        winner = "X";
+        if (UltTTT.start){
+            x -= Window.getX(0);
+            y -= Window.getY(0);
+
+            if(x > TopleftX*Window.getWidth2()/3 && x < Window.getWidth2()/3+TopleftX*Window.getWidth2()/3 && 
+               y > TopleftY*Window.getHeight2()/3 && y < Window.getHeight2()/3+TopleftY*Window.getHeight2()/3) {
+                x = (x-TopleftX*Window.getWidth2()/3)/xdelta;
+                y = (y-TopleftY*Window.getHeight2()/3)/ydelta;
+                //System.out.println(x + " " + y);
+                if(x < 0)
+                    x = 0;
+                else if(x > NUM_ROWS-1)
+                    x = NUM_ROWS-1;
+                if(y < 0)
+                    y = 0;
+                else if(y > NUM_ROWS-1)
+                    y = NUM_ROWS-1;
+                //"falling" piece code
+
+
+                if(subboard[y][x] == null) {
+                    NextY = y;
+                    NextX = x;
+                    subboard[y][x] = new Piece(Player.getCurrentPlayer().getColor(),Player.getCurrentPlayer().getLetter());
+                    if(checkWin()) {
+                        won = true;
+                        //System.out.println(TopleftX + " " + TopleftY);
+                        if(Player.getCurrentPlayer().getColor() == Color.RED) {
+                            winner = "X";
+                        }
+                        else {
+                            winner = "O";
+                        }
                     }
-                    else {
-                        winner = "O";
+                    else if(checkDraw()) {
+                        System.out.println(TopleftX + " " + TopleftY + " " + draw);
+                        draw = true;
                     }
-                }
-                else if(checkDraw()) {
-                    System.out.println(TopleftX + " " + TopleftY + " " + draw);
-                    draw = true;
-                }
-                if (UltTTT.extraTurns) {
-                    if (!won) {
+                    if (UltTTT.extraTurns) {
+                        if (!won) {
+                            Player.switchCurrentPlayer();
+                        }
+                    } else {
                         Player.switchCurrentPlayer();
                     }
-                } else {
-                    Player.switchCurrentPlayer();
                 }
             }
         }

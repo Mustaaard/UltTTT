@@ -38,7 +38,7 @@ public class Board {
     public static void AddPiece(int indexX,int indexY,int x, int y) {
         if(box[indexY][indexX].won == false && box[indexY][indexX].on) {
             box[indexY][indexX].AddPiece(x,y);
-            /*if(box[indexY][indexX].NextX != -1) {
+            if(box[indexY][indexX].NextX != -1) {
                 
                 freewillisamyth = true;
                 
@@ -61,7 +61,7 @@ public class Board {
                 nextY = box[indexY][indexX].NextY;
                 
                 box[indexY][indexX].NextX = -1;
-            }*/
+            }
         }
         if(checkWin())
             won = true;
@@ -149,10 +149,10 @@ public class Board {
             HighLight.draw(g,false);
         }
         else if(!freewillisamyth) {
-            if(MouseXPos > 0 && MouseXPos < Window.getWidth2() && MouseYPos > 0 && MouseYPos < Window.getHeight2()) {
+            
                 //HighLight.getSection(MouseXPos,MouseYPos);
                 HighLight.draw(g,true);
-            }
+            
         }
         
         for (int zi = 0;zi<NUM_ROWS*3;zi++)
