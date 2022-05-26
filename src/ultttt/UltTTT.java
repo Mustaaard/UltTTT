@@ -17,6 +17,7 @@ import javax.swing.*;
 public class UltTTT extends JFrame implements Runnable {
     boolean animateFirstTime = true;
     boolean winfirst=true;
+     boolean drawfirst=true;
     Image image;
     Graphics2D g;
     public static boolean start;
@@ -84,7 +85,7 @@ public class UltTTT extends JFrame implements Runnable {
                     bfgSound = new sound("ff.wav");
                 } else if (e.VK_3 == e.getKeyCode()) {
                     bfgSound.stopPlaying=true;
-                    bfgSound = new sound("GordonRamsey.wav");
+                    bfgSound = new sound("chill.wav");
                 } else if (e.VK_4 == e.getKeyCode()) {
                     bfgSound.stopPlaying=true;
                     bfgSound = new sound("RipandTear.wav");
@@ -199,6 +200,11 @@ public class UltTTT extends JFrame implements Runnable {
             g.drawString(Board.winner + " Wins", 100, 350);
         }
         else if(Board.draw) {
+            if (drawfirst) {
+            drawfirst = false;
+            bfgSound.stopPlaying = !bfgSound.stopPlaying;
+            NumberOneVictoryRoyale = new sound("Better Call Saul.wav");
+            }
             g.setColor(Color.red);
             g.setFont (new Font ("Arial",Font.PLAIN, 150));
             g.drawString("Draw", 100, 350);
