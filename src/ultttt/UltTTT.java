@@ -29,6 +29,7 @@ public class UltTTT extends JFrame implements Runnable {
         frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setResizable(false);
     }
 
     public UltTTT() {
@@ -169,7 +170,7 @@ public class UltTTT extends JFrame implements Runnable {
         if(NumberOneVictoryRoyale != null)
             NumberOneVictoryRoyale.stopPlaying = !NumberOneVictoryRoyale.stopPlaying;
         NumberOneVictoryRoyale = null;
-        bfgSound = new sound("ff.wav");
+        bfgSound = new sound("ChugJug.wav");
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
