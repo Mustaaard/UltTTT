@@ -85,8 +85,13 @@ public class SubBoard {
                     System.out.println(TopleftX + " " + TopleftY + " " + draw);
                     draw = true;
                 }
-                if(!won)
+                if (UltTTT.extraTurns) {
+                    if (!won) {
+                        Player.switchCurrentPlayer();
+                    }
+                } else {
                     Player.switchCurrentPlayer();
+                }
             }
         }
     }

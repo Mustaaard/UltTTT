@@ -19,7 +19,9 @@ public class UltTTT extends JFrame implements Runnable {
     boolean winfirst=true;
     Image image;
     Graphics2D g;
-    
+    public static boolean start;
+    public static boolean blackout;
+    public static boolean extraTurns;
     sound bfgSound = null;
     sound NumberOneVictoryRoyale = null;
     sound boomSound = null;
@@ -86,6 +88,22 @@ public class UltTTT extends JFrame implements Runnable {
                 } else if (e.VK_4 == e.getKeyCode()) {
                     bfgSound.stopPlaying=true;
                     bfgSound = new sound("RipandTear.wav");
+                    } else if (e.VK_SPACE == e.getKeyCode()) {
+                    if (!start) {
+                        start = true;
+                    }
+                } else if (e.VK_B == e.getKeyCode()) {
+                    if (!blackout) {
+                        blackout = true;
+                    } else if (blackout && !start) {
+                        blackout = false;
+                    }
+                } else if (e.VK_E == e.getKeyCode()) {
+                    if (!extraTurns) {
+                        extraTurns = true;
+                    } else if (extraTurns && !start) {
+                        extraTurns = false;
+                    }
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
                     bfgSound.stopPlaying = !bfgSound.stopPlaying;
                     reset();
@@ -122,7 +140,11 @@ public class UltTTT extends JFrame implements Runnable {
         int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
         int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
 //fill border
-        g.setColor(Color.black);
+        if (blackout || !start) {
+            g.setColor(Color.black);
+        } else {
+            g.setColor(Color.white);
+        }
         g.fillPolygon(x, y, 4);
 // draw border
         g.setColor(Color.red);
@@ -133,7 +155,34 @@ public class UltTTT extends JFrame implements Runnable {
             return;
         }
         
-        Board.Draw(g);
+        if (start) {
+            Board.Draw(g);
+        } else {
+            g.setColor(Color.white);
+            g.setFont(new Font("Impact", Font.PLAIN, 25));
+            g.drawString("How To Play Ultamate Tic Tac Toe:", (Window.getWidth2() / 2) - 150, (Window.getHeight2() / 2) - 150);
+            g.setFont(new Font("Impact", Font.PLAIN, 20));
+            g.drawString("* Each turn, you mark one of the small squares.", 30, (Window.getHeight2() / 2) - 120);
+            g.drawString("* When you get three in a row on a small board, you’ve won that board", 30, (Window.getHeight2() / 2) - 100);
+            g.drawString("* To win the game, you need to win three small boards in a row.", 30, (Window.getHeight2() / 2) - 80);
+            g.drawString("* You don’t get to pick which of the nine boards to play on.", 30, (Window.getHeight2() / 2) - 60);
+            g.drawString("That’s determined by your opponent’s previous move.", 30, (Window.getHeight2() / 2) - 40);
+            g.drawString("Whichever square they pick, is the board you must play in next.", 30, (Window.getHeight2() / 2) - 20);
+            g.drawString("* If your opponent sends you to a board that's already been won or is full,", 30, (Window.getHeight2() / 2) - 0);
+            g.drawString("you may play anywhere that is not full or hasn't been won.", 30, (Window.getHeight2() / 2) + 20);
+            g.drawString("*You may change the music with the number keys.", 30, (Window.getHeight2() / 2) + 40);
+            if (blackout) {
+                g.setColor(Color.green);
+            }
+            g.drawString("PRESS B TO ACTIVATE BLACKOUT MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 70);
+            g.setColor(Color.white);
+            if (extraTurns) {
+                g.setColor(Color.green);
+            }
+            g.drawString("PRESS E TO ACTIVATE EXTRA TURN MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 90);
+            g.setColor(Color.white);
+            g.drawString("PRESS SPACE TO PLAY", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 110);
+        }
         
         for(int i = 0;i < 3;i++)
             for(int o = 0;o < 3;o++)
@@ -181,6 +230,9 @@ public class UltTTT extends JFrame implements Runnable {
             NumberOneVictoryRoyale.stopPlaying = !NumberOneVictoryRoyale.stopPlaying;
         NumberOneVictoryRoyale = null;
         bfgSound = new sound("ChugJug.wav");
+        start = false;
+        blackout = false;
+        extraTurns = false;
     }
 /////////////////////////////////////////////////////////////////////////
     public void animate() {
