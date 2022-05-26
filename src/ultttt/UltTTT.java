@@ -24,6 +24,7 @@ public class UltTTT extends JFrame implements Runnable {
     sound NumberOneVictoryRoyale = null;
     sound boomSound = null;
     
+    
     public static void main(String[] args) {
         UltTTT frame = new UltTTT();
         frame.setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
@@ -73,9 +74,18 @@ public class UltTTT extends JFrame implements Runnable {
 
             public void keyPressed(KeyEvent e) {
                 if (e.VK_UP == e.getKeyCode()) {
-                } else if (e.VK_DOWN == e.getKeyCode()) {
-                } else if (e.VK_LEFT == e.getKeyCode()) {
-                } else if (e.VK_RIGHT == e.getKeyCode()) {
+                } else if (e.VK_1 == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("Last.wav");
+                } else if (e.VK_2 == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("ff.wav");
+                } else if (e.VK_3 == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("GordonRamsey.wav");
+                } else if (e.VK_4 == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("RipandTear.wav");
                 } else if (e.VK_ESCAPE == e.getKeyCode()) {
                     bfgSound.stopPlaying = !bfgSound.stopPlaying;
                     reset();
