@@ -153,12 +153,14 @@ public class UltTTT extends JFrame implements Runnable {
         int x[] = {Window.getX(0), Window.getX(Window.getWidth2()), Window.getX(Window.getWidth2()), Window.getX(0), Window.getX(0)};
         int y[] = {Window.getY(0), Window.getY(0), Window.getY(Window.getHeight2()), Window.getY(Window.getHeight2()), Window.getY(0)};
 //fill border
-        if (blackout || !start) {
-            g.setColor(Color.black);
-        } else {
+        if (!blackout) {
             g.setColor(Color.white);
+        } 
+        else {
+            g.setColor(Color.black); 
         }
-        g.fillPolygon(x, y, 4);
+            
+            g.fillPolygon(x, y, 4);
 // draw border
         g.setColor(Color.red);
         g.drawPolyline(x, y, 5);
@@ -171,8 +173,10 @@ public class UltTTT extends JFrame implements Runnable {
         if (start) {
             Board.Draw(g);
         } else {
-            g.setColor(Color.white);
-            g.setFont(new Font("Impact", Font.PLAIN, 25));
+            if (!blackout) 
+                g.setColor(Color.black);
+             else
+                g.setColor(Color.white);            g.setFont(new Font("Impact", Font.PLAIN, 25));
             g.drawString("How To Play Ultamate Tic Tac Toe:", (Window.getWidth2() / 2) - 150, (Window.getHeight2() / 2) - 150);
             g.setFont(new Font("Impact", Font.PLAIN, 20));
             g.drawString("* Each turn, you mark one of the small squares.", 30, (Window.getHeight2() / 2) - 120);
@@ -184,16 +188,20 @@ public class UltTTT extends JFrame implements Runnable {
             g.drawString("* If your opponent sends you to a board that's already been won or is full,", 30, (Window.getHeight2() / 2) - 0);
             g.drawString("you may play anywhere that is not full or hasn't been won.", 30, (Window.getHeight2() / 2) + 20);
             g.drawString("*You may change the music with the number keys.", 30, (Window.getHeight2() / 2) + 40);
-            if (blackout) {
+            if (blackout)
                 g.setColor(Color.green);
-            }
             g.drawString("PRESS B TO ACTIVATE BLACKOUT MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 70);
-            g.setColor(Color.white);
-            if (extraTurns) {
+            if (!blackout) 
+                g.setColor(Color.black);
+            else
+                g.setColor(Color.white);            
+            if (extraTurns) 
                 g.setColor(Color.green);
-            }
             g.drawString("PRESS E TO ACTIVATE EXTRA TURN MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 90);
-            g.setColor(Color.white);
+            if (!blackout) 
+                g.setColor(Color.black);
+             else 
+                g.setColor(Color.white);
             g.drawString("PRESS SPACE TO PLAY", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 110);
             g.drawString("PRESS ESCAPE TO RESTART", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 130);
         }
