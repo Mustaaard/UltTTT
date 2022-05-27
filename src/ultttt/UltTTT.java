@@ -100,7 +100,11 @@ public class UltTTT extends JFrame implements Runnable {
                     else if (e.VK_7 == e.getKeyCode()) {
                     bfgSound.stopPlaying=true;
                     bfgSound = new sound("WalnutBowling.wav");
-                    } 
+                    }
+                    else if (e.VK_8 == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("jojo.wav");
+                    }
                     else if (e.VK_SPACE == e.getKeyCode()) {
                     if (!start) {
                         start = true;
