@@ -257,18 +257,19 @@ public class SubBoard {
             }
             won = tempWon;
         }
-
-        if (players[0]==Player.getCurrentPlayer())
-        {
-        g.setColor(Color.white);
-        g.setFont (new Font ("Papyrus",Font.PLAIN, 25));
-        g.drawString("X's Turn",Window.getWidth2()-325,60);
-        }
-        else if (players[1]==Player.getCurrentPlayer())
-        {
-        g.setColor(Color.white);
-        g.setFont (new Font ("Ink Free",Font.PLAIN, 25));
-        g.drawString("O's Turn",Window.getWidth2()-325,60);
+        if(UltTTT.start){
+            if (players[0]==Player.getCurrentPlayer())
+            {
+            g.setColor(Color.white);
+            g.setFont (new Font ("Papyrus",Font.PLAIN, 25));
+            g.drawString("X's Turn",Window.getWidth2()-325,60);
+            }
+            else if (players[1]==Player.getCurrentPlayer())
+            {
+            g.setColor(Color.white);
+            g.setFont (new Font ("Ink Free",Font.PLAIN, 25));
+            g.drawString("O's Turn",Window.getWidth2()-325,60);
+            }
         }
         
         /*if(won) {
