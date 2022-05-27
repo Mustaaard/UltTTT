@@ -26,7 +26,7 @@ public class UltTTT extends JFrame implements Runnable {
     sound bfgSound = null;
     sound NumberOneVictoryRoyale = null;
     sound boomSound = null;
-    
+    Image tictac;
     
     public static void main(String[] args) {
         UltTTT frame = new UltTTT();
@@ -216,6 +216,7 @@ public class UltTTT extends JFrame implements Runnable {
                 g.setColor(Color.white);
             g.drawString("PRESS SPACE TO PLAY", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 110);
             g.drawString("PRESS ESCAPE TO RESTART", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 130);
+            g.drawImage(tictac, (Window.getWidth2() / 2) - 105, Window.getHeight2()-110, Window.getWidth2()/3, Window.getHeight2()/3, this);
         }
         
         for(int i = 0;i < 3;i++)
@@ -281,6 +282,7 @@ public class UltTTT extends JFrame implements Runnable {
             if (Window.xsize != getSize().width || Window.ysize != getSize().height) {
                 Window.xsize = getSize().width;
                 Window.ysize = getSize().height;
+                tictac = Toolkit.getDefaultToolkit().getImage("./ticity tacity.jpg");
             }
 
             reset();
