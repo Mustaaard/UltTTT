@@ -116,6 +116,10 @@ public class UltTTT extends JFrame implements Runnable {
                     bfgSound.stopPlaying=true;
                     bfgSound = new sound("vietnam.wav");
                     }
+                    else if (e.VK_W == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("TD.wav");
+                    }
                     else if (e.VK_SPACE == e.getKeyCode()) {
                     if (!start) {
                         start = true;
