@@ -65,6 +65,7 @@ public class Board {
         }
         if(checkWin())
             won = true;
+            
         else if(checkDraw() == true)
             draw = true;
     }

@@ -40,15 +40,16 @@ public class UltTTT extends JFrame implements Runnable {
     public UltTTT() {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
+                int[] bleh;
                 if (e.BUTTON1 == e.getButton() ) {
                     if(!Board.won) {
                         for(int i = 0;i < 3;i++) {
                             for(int o = 0;o < 3;o++) {
                                 boomSound = new sound("Boom.wav");
                                 Board.AddPiece(i,o,e.getX(),e.getY());
-                                if(Board.box[i][o].won == true)
+                                if(Board.box[i][o].won == true) {
                                     grSound = new sound("GordonRamsey.wav");
+                                }
                             }
                         }
                     }
@@ -127,6 +128,14 @@ public class UltTTT extends JFrame implements Runnable {
                     else if (e.VK_S == e.getKeyCode()) {
                     bfgSound.stopPlaying=true;
                     bfgSound = new sound("cnbt.wav");
+                    }
+                    else if (e.VK_D == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("Sigma.wav");
+                    }
+                    else if (e.VK_Q == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("SpaceStation13FlipFlap.wav");
                     }
                     else if (e.VK_SPACE == e.getKeyCode()) {
                     if (!start) {
