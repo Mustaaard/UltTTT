@@ -41,15 +41,45 @@ public class UltTTT extends JFrame implements Runnable {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 int[] bleh;
+                int ran = (int)(Math.random()*7/1);
+                System.out.println(ran);
                 if (e.BUTTON1 == e.getButton() ) {
                     if(!Board.won) {
                         for(int i = 0;i < 3;i++) {
                             for(int o = 0;o < 3;o++) {
-                                boomSound = new sound("Boom.wav");
+                               
                                 if(Board.AddPiece(i,o,e.getX(),e.getY()))
                                     grSound = new sound("GordonRamsey.wav");
                             }
                         }
+                    }
+                    if (ran==0)
+                    {
+                        boomSound = new sound("boom.wav");
+                    }
+                    else if (ran==1)
+                    {
+                        boomSound = new sound("sans.wav");
+                    }
+                    else if (ran==2)
+                    {
+                        boomSound = new sound("cod.wav");
+                    }
+                    else if (ran==3)
+                    {
+                        boomSound = new sound("Fard.wav");
+                    }
+                    else if (ran==4)
+                    {
+                        boomSound = new sound("fortnite.wav");
+                    }
+                    else if (ran==5)
+                    {
+                        boomSound = new sound("car.wav");
+                    }
+                    else if (ran==6)
+                    {
+                        boomSound = new sound(".wav");
                     }
                 }
 
@@ -128,6 +158,10 @@ public class UltTTT extends JFrame implements Runnable {
                     bfgSound = new sound("cnbt.wav");
                     }
                     else if (e.VK_D == e.getKeyCode()) {
+                    bfgSound.stopPlaying=true;
+                    bfgSound = new sound("jiggy.wav");
+                    }
+                    else if (e.VK_E == e.getKeyCode()) {
                     bfgSound.stopPlaying=true;
                     bfgSound = new sound("Sigma.wav");
                     }
