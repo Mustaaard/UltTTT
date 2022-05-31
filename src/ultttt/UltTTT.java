@@ -210,8 +210,9 @@ public class UltTTT extends JFrame implements Runnable {
             if (!blackout) 
                 g.setColor(Color.black);
              else
-                g.setColor(Color.white);            g.setFont(new Font("Impact", Font.PLAIN, 25));
-            g.drawString("How To Play Ultamate Tic Tac Toe:", (Window.getWidth2() / 2) - 150, (Window.getHeight2() / 2) - 150);
+                g.setColor(Color.white);            
+            g.setFont(new Font("Snap ITC", Font.PLAIN, 29));
+            g.drawString("How To Play Ultamate Tic Tac Toe:", (Window.getWidth2() / 2) - 268, (Window.getHeight2() / 2) - 150);
             g.setFont(new Font("Impact", Font.PLAIN, 20));
             g.drawString("* Each turn, you mark one of the small squares.", 30, (Window.getHeight2() / 2) - 120);
             g.drawString("* When you get three in a row on a small board, you’ve won that board", 30, (Window.getHeight2() / 2) - 100);
@@ -221,24 +222,30 @@ public class UltTTT extends JFrame implements Runnable {
             g.drawString("Whichever square they pick, is the board you must play in next.", 30, (Window.getHeight2() / 2) - 20);
             g.drawString("* If your opponent sends you to a board that's already been won or is full,", 30, (Window.getHeight2() / 2) - 0);
             g.drawString("you may play anywhere that is not full or hasn't been won.", 30, (Window.getHeight2() / 2) + 20);
-            g.drawString("*You may change the music with the number keys.", 30, (Window.getHeight2() / 2) + 40);
             if (blackout)
                 g.setColor(Color.green);
-            g.drawString("PRESS B TO ACTIVATE BLACKOUT MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 70);
+            g.drawString("PRESS B TO ACTIVATE BLACKOUT MODE", 30, (Window.getHeight2() / 2) + 70);
+            g.setFont(new Font("Impact", Font.PLAIN, 15));
+            g.drawString("(you can only see the boards that you are allowed to play in)", 30, (Window.getHeight2() / 2) + 85);
+            g.setFont(new Font("Impact", Font.PLAIN, 20));
             if (!blackout) 
                 g.setColor(Color.black);
             else
                 g.setColor(Color.white);            
             if (extraTurns) 
                 g.setColor(Color.green);
-            g.drawString("PRESS E TO ACTIVATE EXTRA TURN MODE", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 90);
+            g.drawString("PRESS E TO ACTIVATE EXTRA TURN MODE", 30, (Window.getHeight2() / 2) + 105);
+            g.setFont(new Font("Impact", Font.PLAIN, 15));
+            g.drawString("(if you win a board, you get an extra turn)", 30, (Window.getHeight2() / 2) + 120);
+            g.setFont(new Font("Impact", Font.PLAIN, 20));            
             if (!blackout) 
                 g.setColor(Color.black);
              else 
                 g.setColor(Color.white);
-            g.drawString("PRESS SPACE TO PLAY", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 110);
-            g.drawString("PRESS ESCAPE TO RESTART", (Window.getWidth2() / 2) - 145, (Window.getHeight2() / 2) + 130);
-            g.drawImage(tictac, (Window.getWidth2() / 2) - 105, Window.getHeight2()-110, Window.getWidth2()/3, Window.getHeight2()/3, this);
+            g.drawString("PRESS SPACE TO PLAY", 30, (Window.getHeight2() / 2) + 140);
+            g.drawString("PRESS ESCAPE TO RESTART", 30, (Window.getHeight2() / 2) + 160);
+            g.drawString("You may change the music with WASD and the number keys.", 30, (Window.getHeight2() / 2) + 180);
+            g.drawImage(tictac, 30, Window.getHeight2()-85, Window.getWidth2()/3, (Window.getHeight2()/3)-25, this);
         }
         
         for(int i = 0;i < 3;i++)
