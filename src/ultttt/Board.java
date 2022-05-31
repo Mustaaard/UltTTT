@@ -35,9 +35,14 @@ public class Board {
         freewillisamyth = false;
     }
     
-    public static void AddPiece(int indexX,int indexY,int x, int y) {
+    public static boolean AddPiece(int indexX,int indexY,int x, int y) {
+        boolean boxWin = false;
+        
         if(box[indexY][indexX].won == false && box[indexY][indexX].on) {
             box[indexY][indexX].AddPiece(x,y);
+            if(box[indexY][indexX].checkWin())
+                boxWin = true;
+            
             if(box[indexY][indexX].NextX != -1) {
                 
                 freewillisamyth = true;
@@ -68,6 +73,9 @@ public class Board {
             
         else if(checkDraw() == true)
             draw = true;
+        if(boxWin)
+            return true;
+        return false;
     }
     
     public static boolean checkWin()

@@ -46,10 +46,8 @@ public class UltTTT extends JFrame implements Runnable {
                         for(int i = 0;i < 3;i++) {
                             for(int o = 0;o < 3;o++) {
                                 boomSound = new sound("Boom.wav");
-                                Board.AddPiece(i,o,e.getX(),e.getY());
-                                if(Board.box[i][o].won == true) {
+                                if(Board.AddPiece(i,o,e.getX(),e.getY()))
                                     grSound = new sound("GordonRamsey.wav");
-                                }
                             }
                         }
                     }
