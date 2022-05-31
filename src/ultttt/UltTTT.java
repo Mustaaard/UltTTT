@@ -79,7 +79,7 @@ public class UltTTT extends JFrame implements Runnable {
                     }
                     else if (ran==6)
                     {
-                        boomSound = new sound(".wav");
+                        boomSound = new sound("goku.wav");
                     }
                 }
 
