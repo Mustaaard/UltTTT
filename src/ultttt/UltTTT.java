@@ -140,14 +140,16 @@ public class UltTTT extends JFrame implements Runnable {
                         start = true;
                     }
                 } else if (e.VK_B == e.getKeyCode()) {
-                    if (!blackout) {
-                        blackout = true;
+                    if(!start)
+                        if (!blackout) {
+                            blackout = true;
                     } else if (blackout && !start) {
                         blackout = false;
                     }
                 } else if (e.VK_E == e.getKeyCode()) {
-                    if (!extraTurns) {
-                        extraTurns = true;
+                    if (!start)
+                        if (!extraTurns) {
+                            extraTurns = true;
                     } else if (extraTurns && !start) {
                         extraTurns = false;
                     }
