@@ -40,9 +40,9 @@ public class UltTTT extends JFrame implements Runnable {
     public UltTTT() {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                int[] bleh;
+                //int[] bleh;
                 int ran = (int)(Math.random()*7/1);
-                System.out.println(ran);
+                //System.out.println(ran);
                 if (e.BUTTON1 == e.getButton() ) {
                     if(!Board.won) {
                         for(int i = 0;i < 3;i++) {
