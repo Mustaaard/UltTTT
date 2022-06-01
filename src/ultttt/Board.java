@@ -167,19 +167,27 @@ public class Board {
         for (int zi = 0;zi<NUM_ROWS*3;zi++)
         {
             g.setColor(Color.black);
-            if(zi%3 == 0)
+            if(zi%3 == 0){
                 g.setColor(Color.red);
-            g.drawLine(Window.getX(0),Window.getY(zi*ydelta),
-                    Window.getX(Window.getWidth2()),Window.getY(zi*ydelta));
+                g.drawLine(Window.getX(0),Window.getY(zi*ydelta),Window.getX(Window.getWidth2()),Window.getY(zi*ydelta));
+                g.drawLine(Window.getX(0),Window.getY(zi*ydelta)-1,Window.getX(Window.getWidth2()),Window.getY(zi*ydelta)-1);
+                g.drawLine(Window.getX(0),Window.getY(zi*ydelta)+1,Window.getX(Window.getWidth2()),Window.getY(zi*ydelta)+1);
+            }
+            else 
+                g.drawLine(Window.getX(0), Window.getY(zi * ydelta), Window.getX(Window.getWidth2()), Window.getY(zi * ydelta));
         }
         
         for (int zi = 1;zi<NUM_COLUMNS*3;zi++)
         {
             g.setColor(Color.black);
-            if(zi%3 == 0)
+            if(zi%3 == 0){
                 g.setColor(Color.red);
-            g.drawLine(Window.getX(zi*xdelta),Window.getY(0),
-                    Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
+                g.drawLine(Window.getX(zi*xdelta),Window.getY(0),Window.getX(zi*xdelta),Window.getY(Window.getHeight2()));
+                g.drawLine(Window.getX(zi * xdelta)+1, Window.getY(0), Window.getX(zi * xdelta)+1, Window.getY(Window.getHeight2()));
+                g.drawLine(Window.getX(zi * xdelta) - 1, Window.getY(0), Window.getX(zi * xdelta) - 1, Window.getY(Window.getHeight2()));
+            }
+            else
+                g.drawLine(Window.getX(zi * xdelta), Window.getY(0),Window.getX(zi * xdelta), Window.getY(Window.getHeight2()));
         }
         
     }
