@@ -280,7 +280,7 @@ public class UltTTT extends JFrame implements Runnable {
                 g.setColor(Color.white);
             g.drawString("PRESS SPACE TO PLAY", 30, (Window.getHeight2() / 2) + 140);
             g.drawString("PRESS ESCAPE TO RESTART", 30, (Window.getHeight2() / 2) + 160);
-            g.drawString("You may change the music with WASD and the number keys.", 30, (Window.getHeight2() / 2) + 180);
+            g.drawString("You may change or reset the music with WASD and the number keys.", 30, (Window.getHeight2() / 2) + 180);
             g.drawImage(tictac, 30, Window.getHeight2()-85, Window.getWidth2()/3, (Window.getHeight2()/3)-25, this);
         }
         
